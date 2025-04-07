@@ -82,7 +82,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 
 	@Override
 	protected void deactivateImpl() {
-		cleanupImpl();
+//		cleanupImpl();
 	}
 
 	@Override
