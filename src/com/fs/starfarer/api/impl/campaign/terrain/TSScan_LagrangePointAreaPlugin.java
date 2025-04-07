@@ -11,6 +11,8 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
+import static data.scripts.TSScan_SystemScanPointsManager.getScanLocation;
+
 public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 {
 
@@ -19,19 +21,37 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 
     public static class LagrangePointAreaParams extends RingParams {
         Vector2f location;
-        public LagrangePointAreaParams(float maxRadius, PlanetAPI planet, String name, Vector2f location) {
+        boolean L4orL5;
+        public LagrangePointAreaParams(float maxRadius, PlanetAPI planet, String name, Vector2f location, boolean L4orL5) {
             super(maxRadius, maxRadius/2f, planet, name);
             this.location=location;
+            this.L4orL5=L4orL5;
         }
     }
 
     public LagrangePointAreaParams params;
+    public boolean updated=false;
 
     @Override
     public void advance(float amount)
     {
+        if (Global.getSector().getClock().getDay()%5==0)
+        {
+            if (!updated)
+            {
+                updated=true;
+                params.location=getScanLocation(entity.getStarSystem(), params.L4orL5);
+                entity.setLocation(params.location.x,params.location.y);
+            }
+        }
+        else updated=false;
+        super.advance(amount);
     }
 
+    @Override
+    protected boolean shouldCheckFleetsToApplyEffect() {
+        return false;
+    }
 
     public void init(String terrainId, SectorEntityToken entity, Object param) {
         super.init(terrainId, entity, param);

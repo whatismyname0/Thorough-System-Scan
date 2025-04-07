@@ -33,7 +33,9 @@ public class TSScan_SystemScanPointsManager
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
                 (PlanetAPI)entity,
-                "第四拉格朗日点",getScanLocation(system,false)
+                "第四拉格朗日点",
+                getScanLocation(system,false),
+                false
             )
         ));
         ScanPoints.add(system.addTerrain(
@@ -41,10 +43,13 @@ public class TSScan_SystemScanPointsManager
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
                 (PlanetAPI)entity,
-                "第五拉格朗日点",getScanLocation(system,true)
+                "第五拉格朗日点",
+                getScanLocation(system,true),
+                true
             )
         ));
 
+        ScanPointsOfSystems.remove(system.getId());
         ScanPointsOfSystems.put(system.getId(),ScanPoints);
     }
 
