@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f0f7e51-2d07-4cd5-a837-f9933662ffae" name="更改" comment="-在生涯地图与Tab键地图中增加了第四与第五拉格朗日点。现在玩家可以更容易找到它们。&#10;-Added visible area of L4 and L5 on campaign map and Tab map so they can be located conveniently.&#10;-修复了以教程剧情开始生涯模式时，广域传感器扫描技能不会出现的bug&#10;-Fixed the bug that the system-scale sensor burst is unavailable when campaign starts in tutorial.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jars/ThoroughSystemScan.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jars/ThoroughSystemScan.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/fs/starfarer/api/impl/campaign/abilities/TSScan_SystemScaleSensorBurstAbility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/fs/starfarer/api/impl/campaign/abilities/TSScan_SystemScaleSensorBurstAbility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/fs/starfarer/api/impl/campaign/terrain/TSScan_LagrangePointAreaPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/fs/starfarer/api/impl/campaign/terrain/TSScan_LagrangePointAreaPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/scripts/TSScan_SystemScanPointsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/scripts/TSScan_SystemScanPointsManager.java" afterDir="false" />
+    <list default="true" id="3f0f7e51-2d07-4cd5-a837-f9933662ffae" name="更改" comment="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan.">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mod_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/mod_info.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744039877382</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan.">
+      <option name="closed" value="true" />
+      <created>1744043177245</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744043177245</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +150,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="none" />
     <MESSAGE value="-在生涯地图与Tab键地图中增加了第四与第五拉格朗日点。现在玩家可以更容易找到它们。&#10;-Added visible area of L4 and L5 on campaign map and Tab map so they can be located conveniently.&#10;-修复了以教程剧情开始生涯模式时，广域传感器扫描技能不会出现的bug&#10;-Fixed the bug that the system-scale sensor burst is unavailable when campaign starts in tutorial." />
-    <option name="LAST_COMMIT_MESSAGE" value="-在生涯地图与Tab键地图中增加了第四与第五拉格朗日点。现在玩家可以更容易找到它们。&#10;-Added visible area of L4 and L5 on campaign map and Tab map so they can be located conveniently.&#10;-修复了以教程剧情开始生涯模式时，广域传感器扫描技能不会出现的bug&#10;-Fixed the bug that the system-scale sensor burst is unavailable when campaign starts in tutorial." />
+    <MESSAGE value="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan." />
+    <option name="LAST_COMMIT_MESSAGE" value="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan." />
   </component>
 </project>
