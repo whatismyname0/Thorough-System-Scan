@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f0f7e51-2d07-4cd5-a837-f9933662ffae" name="更改" comment="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3f0f7e51-2d07-4cd5-a837-f9933662ffae" name="更改" comment="none" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,14 +32,12 @@
     &quot;accountId&quot;: &quot;23e84669-a9ea-4b6f-93a2-efbbc8e55473&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2vP3cELlAIm4jO50hRJuq1cHkLk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,10 +46,10 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Starsector/0.97/mods/Thorough System Scan",
-    "project.structure.last.edited": "库",
+    "last_opened_file_path": "D:/Starsector/0.98/mods/Lunalib/jars/LunaLib.jar",
+    "project.structure.last.edited": "项目",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
@@ -123,15 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1744043177245</updated>
     </task>
-    <task id="LOCAL-00008" summary="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan.">
+    <task id="LOCAL-00008" summary="-更改为java7兼容格式&#10;-Changed to java7-compatible form">
       <option name="closed" value="true" />
-      <created>1744043579130</created>
+      <created>1744044508840</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1744043579130</updated>
+      <updated>1744044508840</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="-更改为java7兼容格式&#10;-Changed to java7-compatible form">
+      <option name="closed" value="true" />
+      <created>1744044588427</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744044588427</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,7 +149,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -159,6 +163,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-在生涯地图与Tab键地图中增加了第四与第五拉格朗日点。现在玩家可以更容易找到它们。&#10;-Added visible area of L4 and L5 on campaign map and Tab map so they can be located conveniently.&#10;-修复了以教程剧情开始生涯模式时，广域传感器扫描技能不会出现的bug&#10;-Fixed the bug that the system-scale sensor burst is unavailable when campaign starts in tutorial." />
+    <MESSAGE value="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan." />
+    <MESSAGE value="initialize" />
     <MESSAGE value="none" />
     <MESSAGE value="none" />
     <option name="LAST_COMMIT_MESSAGE" value="none" />
