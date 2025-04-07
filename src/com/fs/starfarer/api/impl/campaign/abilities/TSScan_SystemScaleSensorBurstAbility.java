@@ -9,6 +9,7 @@ import com.fs.starfarer.api.impl.campaign.terrain.AsteroidBeltTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.BaseRingTerrain;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.campaign.CampaignTerrain;
 import data.scripts.TSScan_CRLoss;
 import data.scripts.TSScan_EntityDiscover;
 import data.scripts.TSScan_SystemScanPointsManager;
@@ -231,13 +232,19 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 	public boolean isInScanLocation()
 	{
 		if (getFleet().isInHyperspace())return false;
+		if (TSScan_SystemScanPointsManager.IgnoredSystems.contains(getFleet().getContainingLocation().getId()))return true;
+
 		List<SectorEntityToken> ScanPoints=TSScan_SystemScanPointsManager.ScanPointsOfSystems.get(getFleet().getContainingLocation().getId());
-		for (SectorEntityToken ScanPoint:ScanPoints)
+
+		if (ScanPoints==null||ScanPoints.isEmpty())
 		{
-			Vector2f distance = Vector2f.sub(getFleet().getLocation(),ScanPoint.getLocation(),null);
-			if (distance.lengthSquared()<ScanPoint.getRadius()*ScanPoint.getRadius())
-				return true;
+			TSScan_SystemScanPointsManager.reload(getFleet().getStarSystem());
+			return isInScanLocation();
 		}
+
+		for (SectorEntityToken ScanPoint:ScanPoints)
+			if (((CampaignTerrain)ScanPoint).getPlugin().containsEntity(getFleet()))
+				return true;
 		return false;
 	}
 }

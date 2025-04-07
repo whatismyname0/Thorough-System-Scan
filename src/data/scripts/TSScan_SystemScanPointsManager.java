@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class TSScan_SystemScanPointsManager
 {
-    public static List<StarSystemAPI> IgnoredSystems=new ArrayList<>();
+    public static List<String> IgnoredSystems=new ArrayList<>();
     public static Map<String,List<SectorEntityToken>> ScanPointsOfSystems=new HashMap<>();
 
     public static void reload(StarSystemAPI system)
@@ -23,7 +23,7 @@ public class TSScan_SystemScanPointsManager
         SectorEntityToken entity=getEntityOfScanLocation(system);
         if (entity==null)
         {
-            IgnoredSystems.add(system);
+            IgnoredSystems.add(system.getId());
             return;
         }
 

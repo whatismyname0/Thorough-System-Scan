@@ -48,7 +48,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
     public void renderOnMap(float factor, float alphaMult) {
         if (params == null) return;
         if (rr == null) {
-            rr = new RingRenderer("systemMap", "map_ring");
+            rr = new RingRenderer("systemMap", "map_lagrange_point_area");
         }
         Color color = Global.getSettings().getColor("lagrangePointAreaMapColor");
         rr.render(entity.getLocation(),
@@ -79,7 +79,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
         float angle = (float)Math.PI*2f/(float)segmentCount;
 
         GL11.glBegin(GL11.GL_TRIANGLES);
-        Misc.setColor(Color.DARK_GRAY,.05f);
+        Misc.setColor(new Color(16,16,16),.05f);
 
         for (int i=0;i<segmentCount;i++)
         {

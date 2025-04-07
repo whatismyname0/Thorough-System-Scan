@@ -27,5 +27,13 @@
   "TSSCRLossMultFrigate": 1,
   "TSSCRLossMultDestroyer": 0.75,
   "TSSCRLossMultCruiser": 0.5,
-  "TSSCRLossMultCapital": 0.25
+  "TSSCRLossMultCapital": 0.25,
+
+  "lagrangePointAreaMapColor": [224,224,224,128],
+
+  "graphics": {
+    "systemMap": {
+      "map_lagrange_point_area": "graphics/terrain/map_lagrange_point_area.png"
+    }
+  }
 }
