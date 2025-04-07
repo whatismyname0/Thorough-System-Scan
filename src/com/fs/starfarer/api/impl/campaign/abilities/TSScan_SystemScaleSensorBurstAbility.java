@@ -6,12 +6,13 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.terrain.AsteroidBeltTerrainPlugin;
-import com.fs.starfarer.api.impl.campaign.terrain.TSScan_LagrangePointAreaPlugin;
+import com.fs.starfarer.api.impl.campaign.terrain.BaseRingTerrain;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.TSScan_CRLoss;
 import data.scripts.TSScan_EntityDiscover;
 import data.scripts.TSScan_SystemScanPointsManager;
+import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -230,10 +231,13 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 	public boolean isInScanLocation()
 	{
 		if (getFleet().isInHyperspace())return false;
-		List<TSScan_LagrangePointAreaPlugin> ScanPoints=TSScan_SystemScanPointsManager.ScanPointsOfSystems.get(getFleet().getContainingLocation().getId());
-		for (TSScan_LagrangePointAreaPlugin ScanPoint:ScanPoints)
-			if (ScanPoint.containsEntity(getFleet()))
+		List<SectorEntityToken> ScanPoints=TSScan_SystemScanPointsManager.ScanPointsOfSystems.get(getFleet().getContainingLocation().getId());
+		for (SectorEntityToken ScanPoint:ScanPoints)
+		{
+			Vector2f distance = Vector2f.sub(getFleet().getLocation(),ScanPoint.getLocation(),null);
+			if (distance.lengthSquared()<ScanPoint.getRadius()*ScanPoint.getRadius())
 				return true;
+		}
 		return false;
 	}
 }

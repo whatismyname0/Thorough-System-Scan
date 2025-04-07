@@ -27,6 +27,12 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 
     public LagrangePointAreaParams params;
 
+    @Override
+    public void advance(float amount)
+    {
+    }
+
+
     public void init(String terrainId, SectorEntityToken entity, Object param) {
         super.init(terrainId, entity, param);
         params = (LagrangePointAreaParams) param;
@@ -42,7 +48,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
     public void renderOnMap(float factor, float alphaMult) {
         if (params == null) return;
         if (rr == null) {
-            rr = new RingRenderer("systemMap", "map_lagrange_point_area");
+            rr = new RingRenderer("systemMap", "map_ring");
         }
         Color color = Global.getSettings().getColor("lagrangePointAreaMapColor");
         rr.render(entity.getLocation(),
@@ -57,10 +63,13 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
         float angle = (float)Math.PI*2f/(float)segmentCount;
 
         GL11.glBegin(GL11.GL_LINES);
-        Misc.setColor(Color.lightGray,.8f);
+        Misc.setColor(Color.lightGray,.3f);
 
         for (int i=0;i<segmentCount;i++)
-            GL11.glVertex2f(center.x+radius*(float)Math.cos(angle*(float)i),center.y+radius*(float)Math.sin(angle*(float)i));
+        {
+            GL11.glVertex2f(center.x + radius * (float) Math.cos(angle * (float) i), center.y + radius * (float) Math.sin(angle * (float) i));
+            GL11.glVertex2f(center.x + radius * (float) Math.cos(angle * (float) (i+1)), center.y + radius * (float) Math.sin(angle * (float) (i+1)));
+        }
 
         GL11.glEnd();
     }
@@ -70,7 +79,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
         float angle = (float)Math.PI*2f/(float)segmentCount;
 
         GL11.glBegin(GL11.GL_TRIANGLES);
-        Misc.setColor(Color.DARK_GRAY,.4f);
+        Misc.setColor(Color.DARK_GRAY,.05f);
 
         for (int i=0;i<segmentCount;i++)
         {

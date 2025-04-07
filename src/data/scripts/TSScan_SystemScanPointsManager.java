@@ -16,7 +16,7 @@ import java.util.Map;
 public class TSScan_SystemScanPointsManager
 {
     public static List<StarSystemAPI> IgnoredSystems=new ArrayList<>();
-    public static Map<String,List<TSScan_LagrangePointAreaPlugin>> ScanPointsOfSystems=new HashMap<>();
+    public static Map<String,List<SectorEntityToken>> ScanPointsOfSystems=new HashMap<>();
 
     public static void reload(StarSystemAPI system)
     {
@@ -27,8 +27,8 @@ public class TSScan_SystemScanPointsManager
             return;
         }
 
-        List<TSScan_LagrangePointAreaPlugin> ScanPoints = new ArrayList<>();
-        ScanPoints.add((TSScan_LagrangePointAreaPlugin)system.addTerrain(
+        List<SectorEntityToken> ScanPoints = new ArrayList<>();
+        ScanPoints.add(system.addTerrain(
             TSScan_LagrangePointAreaPlugin.LAGRANGE_POINT_AREA,
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
@@ -36,7 +36,7 @@ public class TSScan_SystemScanPointsManager
                 "第四拉格朗日点",getScanLocation(system,false)
             )
         ));
-        ScanPoints.add((TSScan_LagrangePointAreaPlugin)system.addTerrain(
+        ScanPoints.add(system.addTerrain(
             TSScan_LagrangePointAreaPlugin.LAGRANGE_POINT_AREA,
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
