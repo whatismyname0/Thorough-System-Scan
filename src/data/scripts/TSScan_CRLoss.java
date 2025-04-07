@@ -8,6 +8,8 @@ import com.fs.starfarer.api.util.Misc;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class TSScan_CRLoss {
@@ -24,7 +26,12 @@ public class TSScan_CRLoss {
         List<FleetMemberAPI> ships=new ArrayList<>();
         int numProfileShips = Global.getSettings().getInt("maxSensorShips");
         List<FleetMemberAPI> members = Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy();
-        members.sort((o1, o2) -> o2.getStats().getSensorStrength().getModifiedInt()-o1.getStats().getSensorStrength().getModifiedInt());
+        Collections.sort(members, new Comparator<FleetMemberAPI>() {
+            @Override
+            public int compare(FleetMemberAPI o1, FleetMemberAPI o2) {
+                return o2.getStats().getSensorStrength().getModifiedInt()-o1.getStats().getSensorStrength().getModifiedInt();
+            }
+        });
         for (FleetMemberAPI member:members)
         {
             numProfileShips--;
@@ -60,13 +67,13 @@ public class TSScan_CRLoss {
     public static float lossMultOfSize(ShipAPI.HullSize size)
     {
         float mult=CRLOSS_MULT;
-        return switch (size) {
-            case CAPITAL_SHIP -> mult * CRLOSS_MULT_CAPITAL;
-            case CRUISER -> mult * CRLOSS_MULT_CRUISER;
-            case DESTROYER -> mult * CRLOSS_MULT_DESTROYER;
-            case FRIGATE -> mult * CRLOSS_MULT_FRIGATE;
-            default -> mult * CRLOSS_MULT_DEFAULT;
-        };
+        switch (size) {
+            case CAPITAL_SHIP:return mult * CRLOSS_MULT_CAPITAL;
+            case CRUISER:return mult * CRLOSS_MULT_CRUISER;
+            case DESTROYER:return mult * CRLOSS_MULT_DESTROYER;
+            case FRIGATE:return mult * CRLOSS_MULT_FRIGATE;
+            default:return mult * CRLOSS_MULT_DEFAULT;
+        }
     }
 
     public static float lossMultOfShip(FleetMemberAPI member)
