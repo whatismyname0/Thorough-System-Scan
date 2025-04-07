@@ -1,0 +1,3 @@
+name,id,type,tags,activationDays,activationCooldown,durationDays,deactivationDays,deactivationCooldown,unlockedAtStart,defaultForAIFleet,musicSuppression,uiOn,uiOff,uiLoop,worldOn,worldOff,worldLoop,icon,plugin,ai,desc,sortOrder
+广域传感器扫描,system_scale_sensor_burst,DURATION,"stealth-, burn-, sensors+",3,,0.4,0.2,8,TRUE,,TRUE,ui_sensor_burst_on,,,world_sensor_burst_on,,,graphics/icons/abilities/system_scale_sensor_burst.png,com.fs.starfarer.api.impl.campaign.abilities.TSScan_SystemScaleSensorBurstAbility,,停止航行并极大增加探测距离以揭示整个星系范围内的物体，但也让自身无所遁形。,2000
+,,,,,,,,,,,,,,,,,,,,,

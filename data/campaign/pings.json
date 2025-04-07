@@ -1,0 +1,18 @@
+{
+
+	"system_scale_sensor_burst":{
+		"sounds":["default_campaign_ping"],
+		"width":24,
+		"range":5000,
+		"duration":20,
+		"invert":false,
+		
+		"num":5,
+		"delay":1,	
+	}
+}
+
+
+
+
+

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="fuzzywuzzy-1.3.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Lunalib/jars/fuzzywuzzy-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Lunalib/jars/Lunalib-Kotlin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Lunalib/jars/LunaLib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Lunalib/jars/Lunalib-Kotlin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Lunalib/jars/LunaLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Lunalib/jars/LunaLib.jar!/" />
+    </SOURCES>
+  </library>
+</component>

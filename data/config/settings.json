@@ -1,0 +1,31 @@
+{
+  "TSSSensorStrengthNeeded": 1000,
+
+  "TSSVolatileMult": 1,
+  "TSSVolatileBlackHole": 16,
+  "TSSVolatileNeutronStar": 11,
+  "TSSVolatileBlueSupergiant": 9.5,
+  "TSSVolatileRedSupergiant": 9.5,
+  "TSSVolatileOrangeGiant": 8,
+  "TSSVolatileRedGiant": 8,
+  "TSSVolatileBlueGiant": 8,
+  "TSSVolatileYellow": 6.5,
+  "TSSVolatileOrange": 6.5,
+  "TSSVolatileWhiteDwarf": 8,
+  "TSSVolatileRedDwarf": 6,
+  "TSSVolatileBrownDwarf": 6,
+  "TSSVolatileGasGiant": 4,
+  "TSSVolatileIceGiant": 4,
+  "TSSVolatilePlanet": 2,
+  "TSSVolatileAccretionDisk": 1,
+  "TSSVolatileStableLocation": 0.5,
+  "TSSVolatileGate": 0.5,
+  "TSSVolatileJumpPoint": 0.5,
+  "TSSVolatileSalvageable": 0.5,
+
+  "TSSCRLossMult": 1,
+  "TSSCRLossMultFrigate": 1,
+  "TSSCRLossMultDestroyer": 0.75,
+  "TSSCRLossMultCruiser": 0.5,
+  "TSSCRLossMultCapital": 0.25
+}

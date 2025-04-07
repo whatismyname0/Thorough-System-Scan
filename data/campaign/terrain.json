@@ -1,0 +1,6 @@
+{
+	"lagrange_point_area":{
+		"plugin":"com.fs.starfarer.api.impl.campaign.terrain.TSScan_LagrangePointAreaPlugin"
+	}
+}
+
