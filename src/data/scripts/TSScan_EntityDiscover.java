@@ -34,7 +34,8 @@ public class TSScan_EntityDiscover {
         {
             if (entitiesPair.get(entity.getId())==null)continue;
             if (!entity.isAlive())continue;
-            if (!(entity instanceof CampaignFleetAPI fleet))continue;
+            if (!(entity instanceof CampaignFleetAPI))continue;
+            CampaignFleetAPI fleet=(CampaignFleetAPI)entity;
             fleet.getStats().getSensorProfileMod().unmodify(TSScan_SystemScaleSensorBurstAbility.SYSTEM_SCALE_SENSOR_BURST);
             fleet.setDetectionRangeDetailsOverrideMult(entitiesPair.get(fleet.getId()));
             fleet.setForceNoSensorProfileUpdate(false);
