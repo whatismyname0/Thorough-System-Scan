@@ -28,27 +28,21 @@ public class TSScan_SystemScanPointsManager
         }
 
         List<TSScan_LagrangePointAreaPlugin> ScanPoints = new ArrayList<>();
-        ScanPoints.add((TSScan_LagrangePointAreaPlugin)system.addCustomEntity(
-            "",
-            "",
+        ScanPoints.add((TSScan_LagrangePointAreaPlugin)system.addTerrain(
             TSScan_LagrangePointAreaPlugin.LAGRANGE_POINT_AREA,
-            Factions.NEUTRAL,
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
                 (PlanetAPI)entity,
                 "第四拉格朗日点",getScanLocation(system,false)
             )
         ));
-        ScanPoints.add((TSScan_LagrangePointAreaPlugin)system.addCustomEntity(
-                "",
-                "",
-                TSScan_LagrangePointAreaPlugin.LAGRANGE_POINT_AREA,
-                Factions.NEUTRAL,
-                new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
-                        entity.getCircularOrbitRadius()/8f,
-                        (PlanetAPI)entity,
-                        "第五拉格朗日点",getScanLocation(system,true)
-                )
+        ScanPoints.add((TSScan_LagrangePointAreaPlugin)system.addTerrain(
+            TSScan_LagrangePointAreaPlugin.LAGRANGE_POINT_AREA,
+            new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
+                entity.getCircularOrbitRadius()/8f,
+                (PlanetAPI)entity,
+                "第五拉格朗日点",getScanLocation(system,true)
+            )
         ));
 
         ScanPointsOfSystems.put(system.getId(),ScanPoints);
