@@ -10,8 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f0f7e51-2d07-4cd5-a837-f9933662ffae" name="更改" comment="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan.">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/mod_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +34,9 @@
     &quot;accountId&quot;: &quot;23e84669-a9ea-4b6f-93a2-efbbc8e55473&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -44,18 +46,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Starsector/0.98/mods/Lunalib/jars/LunaLib.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;库&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Starsector/0.97/mods/Thorough System Scan",
+    "project.structure.last.edited": "库",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -121,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744043177245</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan.">
+      <option name="closed" value="true" />
+      <created>1744043579130</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744043579130</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,9 +158,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="none" />
     <MESSAGE value="-在生涯地图与Tab键地图中增加了第四与第五拉格朗日点。现在玩家可以更容易找到它们。&#10;-Added visible area of L4 and L5 on campaign map and Tab map so they can be located conveniently.&#10;-修复了以教程剧情开始生涯模式时，广域传感器扫描技能不会出现的bug&#10;-Fixed the bug that the system-scale sensor burst is unavailable when campaign starts in tutorial." />
-    <MESSAGE value="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan." />
-    <option name="LAST_COMMIT_MESSAGE" value="-更改了拉格朗日点的贴图。&#10;-Changed the texture of Lagrange points.&#10;-修复了无法扫描的bug&#10;-Fixed the bug that it's unable to scan." />
+    <MESSAGE value="none" />
+    <MESSAGE value="none" />
+    <option name="LAST_COMMIT_MESSAGE" value="none" />
   </component>
 </project>
