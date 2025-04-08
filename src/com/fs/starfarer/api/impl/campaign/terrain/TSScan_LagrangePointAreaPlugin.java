@@ -17,7 +17,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 {
 
     public final static String LAGRANGE_POINT_AREA = "lagrange_point_area";
-    public static int segmentCount = 48;
+//    public static int segmentCount = 48;
 
     public static class LagrangePointAreaParams extends RingParams {
         Vector2f location;
@@ -78,44 +78,44 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
                 false, factor, alphaMult);
     }
 
-    public void RoundAreaBorder(Vector2f center, float radius)
-    {
-        float angle = (float)Math.PI*2f/(float)segmentCount;
+//    public void RoundAreaBorder(Vector2f center, float radius)
+//    {
+//        float angle = (float)Math.PI*2f/(float)segmentCount;
+//
+//        GL11.glBegin(GL11.GL_LINES);
+//        Misc.setColor(Color.lightGray,.3f);
+//
+//        for (int i=0;i<segmentCount;i++)
+//        {
+//            GL11.glVertex2f(center.x + radius * (float) Math.cos(angle * (float) i), center.y + radius * (float) Math.sin(angle * (float) i));
+//            GL11.glVertex2f(center.x + radius * (float) Math.cos(angle * (float) (i+1)), center.y + radius * (float) Math.sin(angle * (float) (i+1)));
+//        }
+//
+//        GL11.glEnd();
+//    }
+//
+//    public void RoundAreaFilling(Vector2f center, float radius)
+//    {
+//        float angle = (float)Math.PI*2f/(float)segmentCount;
+//
+//        GL11.glBegin(GL11.GL_TRIANGLES);
+//        Misc.setColor(new Color(16,16,16),.05f);
+//
+//        for (int i=0;i<segmentCount;i++)
+//        {
+//            GL11.glVertex2f(center.x+radius*(float)Math.cos(angle*(float)i),center.y+radius*(float)Math.sin(angle*(float)i));
+//            GL11.glVertex2f(center.x,center.y);
+//            GL11.glVertex2f(center.x+radius*(float)Math.cos(angle*(float)(i+1)),center.y+radius*(float)Math.sin(angle*(float)(i+1)));
+//        }
+//        GL11.glEnd();
+//    }
 
-        GL11.glBegin(GL11.GL_LINES);
-        Misc.setColor(Color.lightGray,.3f);
-
-        for (int i=0;i<segmentCount;i++)
-        {
-            GL11.glVertex2f(center.x + radius * (float) Math.cos(angle * (float) i), center.y + radius * (float) Math.sin(angle * (float) i));
-            GL11.glVertex2f(center.x + radius * (float) Math.cos(angle * (float) (i+1)), center.y + radius * (float) Math.sin(angle * (float) (i+1)));
-        }
-
-        GL11.glEnd();
-    }
-
-    public void RoundAreaFilling(Vector2f center, float radius)
-    {
-        float angle = (float)Math.PI*2f/(float)segmentCount;
-
-        GL11.glBegin(GL11.GL_TRIANGLES);
-        Misc.setColor(new Color(16,16,16),.05f);
-
-        for (int i=0;i<segmentCount;i++)
-        {
-            GL11.glVertex2f(center.x+radius*(float)Math.cos(angle*(float)i),center.y+radius*(float)Math.sin(angle*(float)i));
-            GL11.glVertex2f(center.x,center.y);
-            GL11.glVertex2f(center.x+radius*(float)Math.cos(angle*(float)(i+1)),center.y+radius*(float)Math.sin(angle*(float)(i+1)));
-        }
-        GL11.glEnd();
-    }
-
-    public void render(CampaignEngineLayers layer, ViewportAPI viewport) {
-        RoundAreaBorder(entity.getLocation(),params.bandWidthInEngine);
-        RoundAreaFilling(entity.getLocation(),params.bandWidthInEngine);
-
-        super.render(layer, viewport);
-    }
+//    public void render(CampaignEngineLayers layer, ViewportAPI viewport) {
+//        RoundAreaBorder(entity.getLocation(),params.bandWidthInEngine);
+//        RoundAreaFilling(entity.getLocation(),params.bandWidthInEngine);
+//
+//        super.render(layer, viewport);
+//    }
 
     public String getNameForTooltip() {
         return "星系广域扫描区域";
