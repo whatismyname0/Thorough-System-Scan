@@ -5,7 +5,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.terrain.TSScan_LagrangePointAreaPlugin;
-import data.TSScan_constants;
+import data.TSScan_Constants;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class TSScan_SystemScanPointsManager
 
         List<SectorEntityToken> ScanPoints = new ArrayList<>();
         ScanPoints.add(system.addTerrain(
-            TSScan_constants.LAGRANGE_POINT_AREA,
+            TSScan_Constants.LAGRANGE_POINT_AREA,
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
                 (PlanetAPI)entity,
@@ -39,7 +39,7 @@ public class TSScan_SystemScanPointsManager
             )
         ));
         ScanPoints.add(system.addTerrain(
-            TSScan_constants.LAGRANGE_POINT_AREA,
+            TSScan_Constants.LAGRANGE_POINT_AREA,
             new TSScan_LagrangePointAreaPlugin.LagrangePointAreaParams(
                 entity.getCircularOrbitRadius()/8f,
                 (PlanetAPI)entity,

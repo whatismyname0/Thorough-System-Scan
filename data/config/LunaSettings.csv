@@ -9,7 +9,7 @@ TSSSensorStrengthNeeded,扫描所需最低传感器强度,Double,1000,,默认值
 TSS_VolatileHeader,消耗挥发物设置,Header,消耗挥发物设置,,,,,消耗挥发物设置,
 TSSVolatileMult,消耗挥发物设置总体倍率,Double,1,,默认值：1,0,5,消耗挥发物设置,
 TSS_VolatileHeader2,以下条目均为基础数值,Header,以下条目均为基础数值,,,,,消耗挥发物设置,
-TSSVolatileBlackHole,黑洞,Double,16,,"默认值：16",0,50,消耗挥发物设置,
+TSSVolatileBlackHole,黑洞,Double,16,,默认值：16,0,50,消耗挥发物设置,
 TSSVolatileNeutronStar,中子星,Double,11,,"默认值：11",0,50,消耗挥发物设置,
 TSSVolatileBlueSupergiant,蓝超巨星,Double,9.5,,"默认值：9.5",0,50,消耗挥发物设置,
 TSSVolatileRedSupergiant,红超巨星,Double,9.5,,"默认值：9.5",0,50,消耗挥发物设置,
@@ -29,3 +29,5 @@ TSSVolatileStableLocation,稳定位置,Double,0.5,,"默认值：0.5",0,50,消耗
 TSSVolatileGate,星门,Double,0.5,,"默认值：0.5",0,50,消耗挥发物设置,
 TSSVolatileJumpPoint,跳跃点,Double,0.5,,"默认值：0.5",0,50,消耗挥发物设置,
 TSSVolatileSalvageable,可打捞的人造物体,Double,1,,"默认值：1",0,50,消耗挥发物设置,
+TSS_DisplayHeader,显示设置,Header,显示设置,,,,,显示设置
+TSSMapDisplay,在Tab键地图上显示扫描位置,Boolean,true,,,,,显示设置

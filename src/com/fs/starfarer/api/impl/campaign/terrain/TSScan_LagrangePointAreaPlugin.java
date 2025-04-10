@@ -1,47 +1,38 @@
 package com.fs.starfarer.api.impl.campaign.terrain;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.OrbitAPI;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.campaign.CampaignClock;
+import data.TSScan_Constants;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-import static data.scripts.TSScan_SystemScanPointsManager.getScanLocation;
-
 public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 {
 
-    //    public static int segmentCount = 48;
+    public static int segmentCount = 48;
 
     public static class LagrangePointAreaParams extends RingParams {
         Vector2f location;
         boolean L4orL5;
+        OrbitAPI orbit;
+
         public LagrangePointAreaParams(float maxRadius, PlanetAPI planet, String name, Vector2f location, boolean L4orL5) {
             super(maxRadius, maxRadius/2f, planet, name);
             this.location=location;
             this.L4orL5=L4orL5;
+            this.orbit=planet.getOrbit().makeCopy();
+            if (!L4orL5)
+                this.orbit.advance(this.orbit.getOrbitalPeriod()/6f*CampaignClock.SECONDS_PER_GAME_DAY);
+            else
+                this.orbit.advance(-this.orbit.getOrbitalPeriod()/6f*CampaignClock.SECONDS_PER_GAME_DAY);
         }
     }
 
     public LagrangePointAreaParams params;
-    public boolean updated=false;
-
-    @Override
-    public void advance(float amount)
-    {
-        if (Global.getSector().getClock().getDay()%5==0)
-        {
-            if (!updated)
-            {
-                updated=true;
-                params.location=getScanLocation(entity.getStarSystem(), params.L4orL5);
-                entity.setLocation(params.location.x,params.location.y);
-            }
-        }
-        else updated=false;
-        super.advance(amount);
-    }
 
     @Override
     protected boolean shouldCheckFleetsToApplyEffect() {
@@ -56,21 +47,27 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
             name = "星系广域扫描区域";
         }
         entity.setLocation(params.location.x,params.location.y);
+        entity.setOrbit(params.orbit.makeCopy());
     }
 
     private transient RingRenderer rr;
 
     public void renderOnMap(float factor, float alphaMult) {
         if (params == null) return;
+        if (!TSScan_Constants.MAP_SHOULD_DISPLAY)
+        {
+            rr = null;
+            return;
+        }
         if (rr == null) {
             rr = new RingRenderer("systemMap", "map_lagrange_point_area");
         }
         Color color = Global.getSettings().getColor("lagrangePointAreaMapColor");
         rr.render(entity.getLocation(),
                 0,
-                params.middleRadius*2f,
+                params.bandWidthInEngine,
                 color,
-                false, factor, alphaMult/2f);
+                false, factor, alphaMult/1.5f);
     }
 
 //    public void RoundAreaBorder(Vector2f center, float radius)
@@ -88,7 +85,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 //
 //        GL11.glEnd();
 //    }
-//
+
 //    public void RoundAreaFilling(Vector2f center, float radius)
 //    {
 //        float angle = (float)Math.PI*2f/(float)segmentCount;
@@ -105,11 +102,12 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 //        GL11.glEnd();
 //    }
 
-//    public void render(CampaignEngineLayers layer, ViewportAPI viewport) {
+    @Override
+//    public void render(CampaignEngineLayers layer, ViewportAPI v) {
+//        super.render(layer, v);
+//
 //        RoundAreaBorder(entity.getLocation(),params.bandWidthInEngine);
 //        RoundAreaFilling(entity.getLocation(),params.bandWidthInEngine);
-//
-//        super.render(layer, viewport);
 //    }
 
     public String getNameForTooltip() {

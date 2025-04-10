@@ -5,7 +5,7 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.TSScan_constants;
+import data.TSScan_Constants;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -62,12 +62,12 @@ public class TSScan_CRLoss {
 
     public static float lossMultOfSize(ShipAPI.HullSize size)
     {
-        float mult= TSScan_constants.CRLOSS_MULT;
+        float mult= TSScan_Constants.CRLOSS_MULT;
         switch (size) {
-            case CAPITAL_SHIP:return mult * TSScan_constants.CRLOSS_MULT_CAPITAL;
-            case CRUISER:return mult * TSScan_constants.CRLOSS_MULT_CRUISER;
-            case DESTROYER:return mult * TSScan_constants.CRLOSS_MULT_DESTROYER;
-            case FRIGATE:return mult * TSScan_constants.CRLOSS_MULT_FRIGATE;
+            case CAPITAL_SHIP:return mult * TSScan_Constants.CRLOSS_MULT_CAPITAL;
+            case CRUISER:return mult * TSScan_Constants.CRLOSS_MULT_CRUISER;
+            case DESTROYER:return mult * TSScan_Constants.CRLOSS_MULT_DESTROYER;
+            case FRIGATE:return mult * TSScan_Constants.CRLOSS_MULT_FRIGATE;
             default:return mult * CRLOSS_MULT_DEFAULT;
         }
     }

@@ -3,7 +3,7 @@ package data.scripts;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
-import data.TSScan_constants;
+import data.TSScan_Constants;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +36,7 @@ public class TSScan_EntityDiscover {
             if (!entity.isAlive())continue;
             if (!(entity instanceof CampaignFleetAPI))continue;
             CampaignFleetAPI fleet=(CampaignFleetAPI)entity;
-            fleet.getStats().getSensorProfileMod().unmodify(TSScan_constants.SYSTEM_SCALE_SENSOR_BURST);
+            fleet.getStats().getSensorProfileMod().unmodify(TSScan_Constants.SYSTEM_SCALE_SENSOR_BURST);
             fleet.setDetectionRangeDetailsOverrideMult(entitiesPair.get(fleet.getId()));
             fleet.setForceNoSensorProfileUpdate(false);
         }

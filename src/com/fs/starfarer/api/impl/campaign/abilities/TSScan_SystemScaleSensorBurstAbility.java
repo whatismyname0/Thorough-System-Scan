@@ -9,7 +9,7 @@ import com.fs.starfarer.api.impl.campaign.terrain.AsteroidBeltTerrainPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.CampaignTerrain;
-import data.TSScan_constants;
+import data.TSScan_Constants;
 import data.scripts.TSScan_CRLoss;
 import data.scripts.TSScan_EntityDiscover;
 import data.scripts.TSScan_SystemScanPointsManager;
@@ -33,7 +33,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 				TSScan_CRLoss.CRLoss(false,null);
 				getFleet().getCargo().removeCommodity(Commodities.VOLATILES,(int)computeVolatileCost());
 			}
-			Global.getSector().addPing(entity, TSScan_constants.SYSTEM_SCALE_SENSOR_BURST);
+			Global.getSector().addPing(entity, TSScan_Constants.SYSTEM_SCALE_SENSOR_BURST);
 		}
 	}
 
@@ -85,10 +85,10 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 				pad, highlight,"缓慢移动");
 		tooltip.addPara("受引力场影响,若星系除中心天体外有其他天体,只能在最高轨道天体的L4或L5点附近进行广域传感器扫描.",
 				pad);
-		if (getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())< TSScan_constants.SENSOR_STRENGTH_NEEDED)
+		addIncompatibleToTooltip(tooltip, expanded);
+		if (getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())< TSScan_Constants.SENSOR_STRENGTH_NEEDED)
 		{
-			tooltip.addPara("警告:你的舰队传感器强度必须达到1000才能有效进行广域传感器扫描!", alarm, pad);
-			addIncompatibleToTooltip(tooltip, expanded);
+			tooltip.addPara("警告:你的舰队传感器强度必须达到 %s 才能有效进行广域传感器扫描!", pad, alarm, highlight, ""+TSScan_Constants.SENSOR_STRENGTH_NEEDED);
 			return;
 		}
 		if (getFleet().isInHyperspace())
@@ -142,7 +142,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 				!getFleet().isInHyperspace()&&
 				(
 						isInScanLocation()&&
-								getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())>= TSScan_constants.SENSOR_STRENGTH_NEEDED&&
+								getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())>= TSScan_Constants.SENSOR_STRENGTH_NEEDED&&
 								computeVolatileCost() <= getFleet().getCargo().getCommodityQuantity(Commodities.VOLATILES)
 				)||
 				Global.getSettings().isDevMode();
@@ -174,32 +174,32 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 				if (entity.hasTag(Tags.STAR)||entity.hasTag(Tags.GAS_GIANT))
 				{
                     switch (((PlanetAPI) entity).getSpec().getPlanetType()) {
-						case StarTypes.BLACK_HOLE:cost += TSScan_constants.VOLATILE_MULT_BLACK_HOLE;
-                        case StarTypes.NEUTRON_STAR:cost += TSScan_constants.VOLATILE_MULT_NEUTRON_STAR;
-                        case StarTypes.BLUE_SUPERGIANT:cost += TSScan_constants.VOLATILE_MULT_BLUE_SUPERGIANT;
-                        case StarTypes.RED_SUPERGIANT:cost += TSScan_constants.VOLATILE_MULT_RED_SUPERGIANT;
-                        case StarTypes.ORANGE_GIANT:cost += TSScan_constants.VOLATILE_MULT_ORANGE_GIANT;
-                        case StarTypes.RED_GIANT:cost += TSScan_constants.VOLATILE_MULT_RED_GIANT;
-                        case StarTypes.BLUE_GIANT:cost += TSScan_constants.VOLATILE_MULT_BLUE_GIANT;
-                        case StarTypes.YELLOW:cost += TSScan_constants.VOLATILE_MULT_YELLOW;
-                        case StarTypes.ORANGE:cost += TSScan_constants.VOLATILE_MULT_ORANGE;
-                        case StarTypes.WHITE_DWARF:cost += TSScan_constants.VOLATILE_MULT_WHITE_DWARF;
-                        case StarTypes.RED_DWARF:cost += TSScan_constants.VOLATILE_MULT_RED_DWARF;
-                        case StarTypes.BROWN_DWARF:cost += TSScan_constants.VOLATILE_MULT_BROWN_DWARF;
-                        case StarTypes.GAS_GIANT:cost += TSScan_constants.VOLATILE_MULT_GAS_GIANT;
-                        case StarTypes.ICE_GIANT:cost += TSScan_constants.VOLATILE_MULT_ICE_GIANT;
+						case StarTypes.BLACK_HOLE:cost += TSScan_Constants.VOLATILE_MULT_BLACK_HOLE;
+                        case StarTypes.NEUTRON_STAR:cost += TSScan_Constants.VOLATILE_MULT_NEUTRON_STAR;
+                        case StarTypes.BLUE_SUPERGIANT:cost += TSScan_Constants.VOLATILE_MULT_BLUE_SUPERGIANT;
+                        case StarTypes.RED_SUPERGIANT:cost += TSScan_Constants.VOLATILE_MULT_RED_SUPERGIANT;
+                        case StarTypes.ORANGE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_ORANGE_GIANT;
+                        case StarTypes.RED_GIANT:cost += TSScan_Constants.VOLATILE_MULT_RED_GIANT;
+                        case StarTypes.BLUE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_BLUE_GIANT;
+                        case StarTypes.YELLOW:cost += TSScan_Constants.VOLATILE_MULT_YELLOW;
+                        case StarTypes.ORANGE:cost += TSScan_Constants.VOLATILE_MULT_ORANGE;
+                        case StarTypes.WHITE_DWARF:cost += TSScan_Constants.VOLATILE_MULT_WHITE_DWARF;
+                        case StarTypes.RED_DWARF:cost += TSScan_Constants.VOLATILE_MULT_RED_DWARF;
+                        case StarTypes.BROWN_DWARF:cost += TSScan_Constants.VOLATILE_MULT_BROWN_DWARF;
+                        case StarTypes.GAS_GIANT:cost += TSScan_Constants.VOLATILE_MULT_GAS_GIANT;
+                        case StarTypes.ICE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_ICE_GIANT;
                         default:cost += 0;
                     };
 				}
-				else if (entity.hasTag(Tags.PLANET))cost+= TSScan_constants.VOLATILE_MULT_PLANET;
+				else if (entity.hasTag(Tags.PLANET))cost+= TSScan_Constants.VOLATILE_MULT_PLANET;
 			}
-			else if (entity.hasTag(Tags.ACCRETION_DISK))cost+= TSScan_constants.VOLATILE_MULT_ACCRETION_DISK;
-			else if (entity.hasTag(Tags.STABLE_LOCATION))cost+= TSScan_constants.VOLATILE_MULT_STABLE_LOCATION;
-			else if (entity.hasTag(Tags.GATE))cost+= TSScan_constants.VOLATILE_MULT_GATE;
-			else if (entity.hasTag(Tags.JUMP_POINT))cost+= TSScan_constants.VOLATILE_MULT_JUMP_POINT;
-			else if (entity.hasTag(Tags.SALVAGEABLE))cost+= TSScan_constants.VOLATILE_MULT_SALVAGEABLE;
+			else if (entity.hasTag(Tags.ACCRETION_DISK))cost+= TSScan_Constants.VOLATILE_MULT_ACCRETION_DISK;
+			else if (entity.hasTag(Tags.STABLE_LOCATION))cost+= TSScan_Constants.VOLATILE_MULT_STABLE_LOCATION;
+			else if (entity.hasTag(Tags.GATE))cost+= TSScan_Constants.VOLATILE_MULT_GATE;
+			else if (entity.hasTag(Tags.JUMP_POINT))cost+= TSScan_Constants.VOLATILE_MULT_JUMP_POINT;
+			else if (entity.hasTag(Tags.SALVAGEABLE))cost+= TSScan_Constants.VOLATILE_MULT_SALVAGEABLE;
 		}
-		return (float)(cost* TSScan_constants.VOLATILE_MULT);
+		return (float)(cost* TSScan_Constants.VOLATILE_MULT);
 	}
 
 	public boolean isInScanLocation()

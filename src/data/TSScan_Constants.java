@@ -2,7 +2,7 @@ package data;
 
 import com.fs.starfarer.api.Global;
 
-public class TSScan_constants {
+public class TSScan_Constants {
     public static final String SYSTEM_SCALE_SENSOR_BURST = "system_scale_sensor_burst";
     public final static String LAGRANGE_POINT_AREA = "lagrange_point_area";
 
@@ -36,4 +36,6 @@ public class TSScan_constants {
     public static float CRLOSS_MULT_DESTROYER = Global.getSettings().getFloat("TSSCRLossMultDestroyer");
     public static float CRLOSS_MULT_CRUISER = Global.getSettings().getFloat("TSSCRLossMultCruiser");
     public static float CRLOSS_MULT_CAPITAL = Global.getSettings().getFloat("TSSCRLossMultCapital");
+
+    public static boolean MAP_SHOULD_DISPLAY = Global.getSettings().getBoolean("TSSMapDisplay");
 }
