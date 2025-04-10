@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.terrain.TSScan_LagrangePointAreaPlugin;
+import com.fs.starfarer.campaign.CampaignTerrain;
 import data.TSScan_Constants;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -21,6 +22,16 @@ public class TSScan_SystemScanPointsManager
     public static void reload(StarSystemAPI system)
     {
         SectorEntityToken entity=getEntityOfScanLocation(system);
+        List<SectorEntityToken> terrains=system.getEntitiesWithTag(Tags.TERRAIN);
+
+        for (SectorEntityToken terrain:terrains)
+        {
+            if (!(terrain instanceof CampaignTerrain))continue;
+            CampaignTerrain terrain1 = (CampaignTerrain) terrain;
+            if (!terrain1.getType().equals(TSScan_Constants.LAGRANGE_POINT_AREA))continue;
+            ((TSScan_LagrangePointAreaPlugin)terrain1.getPlugin()).delete();
+        }
+
         if (entity==null)
         {
             IgnoredSystems.add(system.getId());

@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.OrbitAPI;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.campaign.CampaignClock;
+import com.fs.starfarer.campaign.CampaignTerrain;
 import data.TSScan_Constants;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -39,6 +40,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
         return false;
     }
 
+    @Override
     public void init(String terrainId, SectorEntityToken entity, Object param) {
         super.init(terrainId, entity, param);
         params = (LagrangePointAreaParams) param;
@@ -48,10 +50,20 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
         }
         entity.setLocation(params.location.x,params.location.y);
         entity.setOrbit(params.orbit.makeCopy());
+        ((CampaignTerrain)entity).setRadius(params.bandWidthInEngine);
     }
+
+    public void delete()
+    {
+        entity.getContainingLocation().removeEntity(entity);
+        entity=null;
+        params=null;
+    }
+
 
     private transient RingRenderer rr;
 
+    @Override
     public void renderOnMap(float factor, float alphaMult) {
         if (params == null) return;
         if (!TSScan_Constants.MAP_SHOULD_DISPLAY)
@@ -102,7 +114,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 //        GL11.glEnd();
 //    }
 
-    @Override
+//    @Override
 //    public void render(CampaignEngineLayers layer, ViewportAPI v) {
 //        super.render(layer, v);
 //
@@ -110,11 +122,13 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 //        RoundAreaFilling(entity.getLocation(),params.bandWidthInEngine);
 //    }
 
+    @Override
     public String getNameForTooltip() {
         return "星系广域扫描区域";
         //return params.name;
     }
 
+    @Override
     public float getProximitySoundFactor() {
         return 0;
     }
