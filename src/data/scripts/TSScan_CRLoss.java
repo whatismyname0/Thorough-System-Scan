@@ -5,6 +5,7 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.TSScan_constants;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,11 +15,6 @@ import java.util.List;
 
 public class TSScan_CRLoss {
     public static final float baseCRDamage = 20f;
-    public static float CRLOSS_MULT = Global.getSettings().getFloat("TSSCRLossMult");
-    public static float CRLOSS_MULT_FRIGATE = Global.getSettings().getFloat("TSSCRLossMultFrigate");
-    public static float CRLOSS_MULT_DESTROYER = Global.getSettings().getFloat("TSSCRLossMultDestroyer");
-    public static float CRLOSS_MULT_CRUISER = Global.getSettings().getFloat("TSSCRLossMultCruiser");
-    public static float CRLOSS_MULT_CAPITAL = Global.getSettings().getFloat("TSSCRLossMultCapital");
     public static float CRLOSS_MULT_DEFAULT = .625f;
 
     public static List<FleetMemberAPI> getSensorMembers()
@@ -66,12 +62,12 @@ public class TSScan_CRLoss {
 
     public static float lossMultOfSize(ShipAPI.HullSize size)
     {
-        float mult=CRLOSS_MULT;
+        float mult= TSScan_constants.CRLOSS_MULT;
         switch (size) {
-            case CAPITAL_SHIP:return mult * CRLOSS_MULT_CAPITAL;
-            case CRUISER:return mult * CRLOSS_MULT_CRUISER;
-            case DESTROYER:return mult * CRLOSS_MULT_DESTROYER;
-            case FRIGATE:return mult * CRLOSS_MULT_FRIGATE;
+            case CAPITAL_SHIP:return mult * TSScan_constants.CRLOSS_MULT_CAPITAL;
+            case CRUISER:return mult * TSScan_constants.CRLOSS_MULT_CRUISER;
+            case DESTROYER:return mult * TSScan_constants.CRLOSS_MULT_DESTROYER;
+            case FRIGATE:return mult * TSScan_constants.CRLOSS_MULT_FRIGATE;
             default:return mult * CRLOSS_MULT_DEFAULT;
         }
     }

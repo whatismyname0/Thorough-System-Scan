@@ -1,12 +1,8 @@
 package com.fs.starfarer.api.impl.campaign.terrain;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CampaignEngineLayers;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
-import com.fs.starfarer.api.combat.ViewportAPI;
-import com.fs.starfarer.api.util.Misc;
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
@@ -16,8 +12,7 @@ import static data.scripts.TSScan_SystemScanPointsManager.getScanLocation;
 public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 {
 
-    public final static String LAGRANGE_POINT_AREA = "lagrange_point_area";
-//    public static int segmentCount = 48;
+    //    public static int segmentCount = 48;
 
     public static class LagrangePointAreaParams extends RingParams {
         Vector2f location;
