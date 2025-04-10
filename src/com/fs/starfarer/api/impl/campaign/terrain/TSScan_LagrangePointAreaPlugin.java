@@ -75,7 +75,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
                 0,
                 params.middleRadius*2f,
                 color,
-                false, factor, alphaMult);
+                false, factor, alphaMult/2f);
     }
 
 //    public void RoundAreaBorder(Vector2f center, float radius)

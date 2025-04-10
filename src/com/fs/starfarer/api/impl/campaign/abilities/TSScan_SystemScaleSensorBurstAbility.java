@@ -76,7 +76,9 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		if (fleet == null) return;
 
 		fleet.getStats().getSensorRangeMod().modifyFlat(getModId(), ((int)(9000f*Math.random())%(10000-getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength()))), "广域传感器扫描");
-		fleet.getStats().getDetectedRangeMod().modifyFlat(getModId(), 30000f, "广域传感器扫描");
+		fleet.getStats().addTemporaryModFlat(3f, id,
+				"广域传感器扫描", 30000f,
+				fleet.getStats().getDetectedRangeMod());
 		if (level>=.8f&&nowDiscovery==null)nowDiscovery=new TSScan_EntityDiscover(fleet.getStarSystem());
 
 		fleet.goSlowOneFrame();
@@ -94,7 +96,6 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		if (nowDiscovery!=null)nowDiscovery.recoverEntities();
 		nowDiscovery=null;
 		fleet.getStats().getSensorRangeMod().unmodify(getModId());
-		fleet.getStats().getDetectedRangeMod().unmodify(getModId());
 	}
 
 	@Override
