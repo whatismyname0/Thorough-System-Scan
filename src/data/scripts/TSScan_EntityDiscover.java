@@ -1,5 +1,6 @@
 package data.scripts;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
@@ -20,7 +21,7 @@ public class TSScan_EntityDiscover {
     {
         entities=location.getAllEntities();
         for (SectorEntityToken entity:entities)
-            if (entity.getSensorProfile()!=0.0F)
+            if (entity.getSensorProfile()!=0.0F && entity != Global.getSector().getPlayerFleet())
             {
                 entitiesPair.put(entity.getId(),entity.getSensorProfile());
 

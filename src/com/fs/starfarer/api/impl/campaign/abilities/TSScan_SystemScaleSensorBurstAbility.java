@@ -42,16 +42,14 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 
 		if (getFleet().getContainingLocation()!=initialLocation)
 		{
-			deactivateImpl();
+			deactivate();
 			return;
 		}
 		CampaignFleetAPI fleet = getFleet();
 		if (fleet == null) return;
 
 		fleet.getStats().getSensorRangeMod().modifyFlat(getModId(), ((int)(9000f*Math.random())%(10000-getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength()))), "广域传感器扫描");
-		fleet.getStats().addTemporaryModFlat(3f, id,
-				"广域传感器扫描", 30000f,
-				fleet.getStats().getDetectedRangeMod());
+		fleet.getStats().getSensorProfileMod().modifyFlat(getModId(), 30000f, "广域传感器扫描");
 		if (level>=.8f&&nowDiscovery==null)nowDiscovery=new TSScan_EntityDiscover(fleet.getStarSystem());
 
 		fleet.goSlowOneFrame();
@@ -69,6 +67,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		if (nowDiscovery!=null)nowDiscovery.recoverEntities();
 		nowDiscovery=null;
 		fleet.getStats().getSensorRangeMod().unmodify(getModId());
+		fleet.getStats().getSensorProfileMod().unmodify(getModId());
 	}
 
 	@Override
@@ -138,14 +137,16 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 	@Override
 	public boolean isUsable() {
 		return super.isUsable() &&
-				getFleet() != null &&
-				!getFleet().isInHyperspace()&&
-				(
-						isInScanLocation()&&
-								getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())>= TSScan_Constants.SENSOR_STRENGTH_NEEDED&&
-								computeVolatileCost() <= getFleet().getCargo().getCommodityQuantity(Commodities.VOLATILES)
-				)||
-				Global.getSettings().isDevMode();
+		(
+			getFleet() != null &&
+			!getFleet().isInHyperspace()&&
+			(
+				isInScanLocation()&&
+				getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())>= TSScan_Constants.SENSOR_STRENGTH_NEEDED&&
+				computeVolatileCost() <= getFleet().getCargo().getCommodityQuantity(Commodities.VOLATILES)
+			)||
+			Global.getSettings().isDevMode()
+		);
 	}
 	protected boolean showAlarm() {
 		return !getNonReadyShips().isEmpty() && !isOnCooldown() && !isActiveOrInProgress() && isUsable();
