@@ -31,11 +31,11 @@ public class TSScan_Constants {
     public static float VOLATILE_MULT_JUMP_POINT = Global.getSettings().getFloat("TSSVolatileJumpPoint");
     public static float VOLATILE_MULT_SALVAGEABLE = Global.getSettings().getFloat("TSSVolatileSalvageable");
 
-    public static float CRLOSS_MULT = Global.getSettings().getFloat("TSSCRLossMult");
-    public static float CRLOSS_MULT_FRIGATE = Global.getSettings().getFloat("TSSCRLossMultFrigate");
-    public static float CRLOSS_MULT_DESTROYER = Global.getSettings().getFloat("TSSCRLossMultDestroyer");
-    public static float CRLOSS_MULT_CRUISER = Global.getSettings().getFloat("TSSCRLossMultCruiser");
-    public static float CRLOSS_MULT_CAPITAL = Global.getSettings().getFloat("TSSCRLossMultCapital");
+    public static float CR_LOSS_MULT = Global.getSettings().getFloat("TSSCRLossMult");
+    public static float CR_LOSS_MULT_FRIGATE = Global.getSettings().getFloat("TSSCRLossMultFrigate");
+    public static float CR_LOSS_MULT_DESTROYER = Global.getSettings().getFloat("TSSCRLossMultDestroyer");
+    public static float CR_LOSS_MULT_CRUISER = Global.getSettings().getFloat("TSSCRLossMultCruiser");
+    public static float CR_LOSS_MULT_CAPITAL = Global.getSettings().getFloat("TSSCRLossMultCapital");
 
     public static boolean MAP_SHOULD_DISPLAY = Global.getSettings().getBoolean("TSSMapDisplay");
 }
