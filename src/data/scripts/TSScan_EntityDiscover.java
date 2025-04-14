@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class TSScan_EntityDiscover {
 
-    private Map<String,Float> entitiesPair=new HashMap<>();
+    private final Map<String,Float> entitiesPair=new HashMap<>();
 
-    private List<SectorEntityToken> entities;
+    private final List<SectorEntityToken> entities;
 
     public TSScan_EntityDiscover(StarSystemAPI location)
     {

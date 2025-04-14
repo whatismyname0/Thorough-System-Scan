@@ -12,37 +12,53 @@ public class TSScan_LunaSettingsListener implements LunaSettingsListener
     {
         if (modID.equals(ThoroughSystemScanPlugin.modID))reload();
     }
+
+    protected static Object getValue(String type, String id)
+    {
+        switch (type)
+        {
+            case "int":return LunaSettings.getInt(ThoroughSystemScanPlugin.modID,id);
+            case "float":return LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,id);
+            case "double":return LunaSettings.getDouble(ThoroughSystemScanPlugin.modID,id);
+            case "string":return LunaSettings.getString(ThoroughSystemScanPlugin.modID,id);
+            case "boolean":return LunaSettings.getBoolean(ThoroughSystemScanPlugin.modID,id);
+            case "color":return LunaSettings.getColor(ThoroughSystemScanPlugin.modID,id);
+            default:return null;
+        }
+    }
+
+    @SuppressWarnings("DataFlowIssue")
     public static void reload()
     {
-        TSScan_Constants.SENSOR_STRENGTH_NEEDED = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSSensorStrengthNeeded");
-        TSScan_Constants.VOLATILE_MULT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSVolatileMult");
-        TSScan_Constants.VOLATILE_MULT_BLACK_HOLE = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileBlackHole");
-        TSScan_Constants.VOLATILE_MULT_NEUTRON_STAR = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileNeutronStar");
-        TSScan_Constants.VOLATILE_MULT_BLUE_SUPERGIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileBlueSupergiant");
-        TSScan_Constants.VOLATILE_MULT_RED_SUPERGIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileRedSupergiant");
-        TSScan_Constants.VOLATILE_MULT_ORANGE_GIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileOrangeGiant");
-        TSScan_Constants.VOLATILE_MULT_RED_GIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileRedGiant");
-        TSScan_Constants.VOLATILE_MULT_BLUE_GIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileBlueGiant");
-        TSScan_Constants.VOLATILE_MULT_YELLOW = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileYellow");
-        TSScan_Constants.VOLATILE_MULT_ORANGE = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileOrange");
-        TSScan_Constants.VOLATILE_MULT_WHITE_DWARF = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileWhiteDwarf");
-        TSScan_Constants.VOLATILE_MULT_RED_DWARF = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileRedDwarf");
-        TSScan_Constants.VOLATILE_MULT_BROWN_DWARF = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileBrownDwarf");
-        TSScan_Constants.VOLATILE_MULT_GAS_GIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileGasGiant");
-        TSScan_Constants.VOLATILE_MULT_ICE_GIANT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileIceGiant");
-        TSScan_Constants.VOLATILE_MULT_PLANET = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatilePlanet");
-        TSScan_Constants.VOLATILE_MULT_ACCRETION_DISK = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileAccretionDisk");
-        TSScan_Constants.VOLATILE_MULT_STABLE_LOCATION = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileStableLocation");
-        TSScan_Constants.VOLATILE_MULT_GATE = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileGate");
-        TSScan_Constants.VOLATILE_MULT_JUMP_POINT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileJumpPoint");
-        TSScan_Constants.VOLATILE_MULT_SALVAGEABLE = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID,"TSSVolatileSalvageable");
+        TSScan_Constants.SENSOR_STRENGTH_NEEDED = (Float)getValue("float", "TSSSensorStrengthNeeded");
+        TSScan_Constants.VOLATILE_MULT = (Float)getValue("float", "TSSVolatileMult");
+        TSScan_Constants.VOLATILE_MULT_BLACK_HOLE = (Float)getValue("float","TSSVolatileBlackHole");
+        TSScan_Constants.VOLATILE_MULT_NEUTRON_STAR = (Float)getValue("float","TSSVolatileNeutronStar");
+        TSScan_Constants.VOLATILE_MULT_BLUE_SUPERGIANT = (Float)getValue("float","TSSVolatileBlueSupergiant");
+        TSScan_Constants.VOLATILE_MULT_RED_SUPERGIANT = (Float)getValue("float","TSSVolatileRedSupergiant");
+        TSScan_Constants.VOLATILE_MULT_ORANGE_GIANT = (Float)getValue("float","TSSVolatileOrangeGiant");
+        TSScan_Constants.VOLATILE_MULT_RED_GIANT = (Float)getValue("float","TSSVolatileRedGiant");
+        TSScan_Constants.VOLATILE_MULT_BLUE_GIANT = (Float)getValue("float","TSSVolatileBlueGiant");
+        TSScan_Constants.VOLATILE_MULT_YELLOW = (Float)getValue("float","TSSVolatileYellow");
+        TSScan_Constants.VOLATILE_MULT_ORANGE = (Float)getValue("float","TSSVolatileOrange");
+        TSScan_Constants.VOLATILE_MULT_WHITE_DWARF = (Float)getValue("float","TSSVolatileWhiteDwarf");
+        TSScan_Constants.VOLATILE_MULT_RED_DWARF = (Float)getValue("float","TSSVolatileRedDwarf");
+        TSScan_Constants.VOLATILE_MULT_BROWN_DWARF = (Float)getValue("float","TSSVolatileBrownDwarf");
+        TSScan_Constants.VOLATILE_MULT_GAS_GIANT = (Float)getValue("float","TSSVolatileGasGiant");
+        TSScan_Constants.VOLATILE_MULT_ICE_GIANT = (Float)getValue("float","TSSVolatileIceGiant");
+        TSScan_Constants.VOLATILE_MULT_PLANET = (Float)getValue("float","TSSVolatilePlanet");
+        TSScan_Constants.VOLATILE_MULT_ACCRETION_DISK = (Float)getValue("float","TSSVolatileAccretionDisk");
+        TSScan_Constants.VOLATILE_MULT_STABLE_LOCATION = (Float)getValue("float","TSSVolatileStableLocation");
+        TSScan_Constants.VOLATILE_MULT_GATE = (Float)getValue("float","TSSVolatileGate");
+        TSScan_Constants.VOLATILE_MULT_JUMP_POINT = (Float)getValue("float","TSSVolatileJumpPoint");
+        TSScan_Constants.VOLATILE_MULT_SALVAGEABLE = (Float)getValue("float","TSSVolatileSalvageable");
 
-        TSScan_Constants.CRLOSS_MULT = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSCRLossMult");
-        TSScan_Constants.CRLOSS_MULT_FRIGATE = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSCRLossMultFrigate");
-        TSScan_Constants.CRLOSS_MULT_DESTROYER = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSCRLossMultDestroyer");
-        TSScan_Constants.CRLOSS_MULT_CRUISER = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSCRLossMultCruiser");
-        TSScan_Constants.CRLOSS_MULT_CAPITAL = LunaSettings.getFloat(ThoroughSystemScanPlugin.modID, "TSSCRLossMultCapital");
+        TSScan_Constants.CR_LOSS_MULT = (Float)getValue("float", "TSSCRLossMult");
+        TSScan_Constants.CR_LOSS_MULT_FRIGATE = (Float)getValue("float", "TSSCRLossMultFrigate");
+        TSScan_Constants.CR_LOSS_MULT_DESTROYER = (Float)getValue("float", "TSSCRLossMultDestroyer");
+        TSScan_Constants.CR_LOSS_MULT_CRUISER = (Float)getValue("float", "TSSCRLossMultCruiser");
+        TSScan_Constants.CR_LOSS_MULT_CAPITAL = (Float)getValue("float", "TSSCRLossMultCapital");
 
-        TSScan_Constants.MAP_SHOULD_DISPLAY = LunaSettings.getBoolean(ThoroughSystemScanPlugin.modID, "TSSMapDisplay");
+        TSScan_Constants.MAP_SHOULD_DISPLAY = (Boolean)getValue("boolean", "TSSMapDisplay");
     }
 }

@@ -86,6 +86,7 @@ public class TSScan_SystemScanPointsManager
     public static Vector2f getScanLocation(StarSystemAPI location, boolean L4orL5)
     {
         SectorEntityToken entity = getEntityOfScanLocation(location);
+        if (entity == null)return null;
         float angle = (entity.getCircularOrbitAngle()+60f*(L4orL5?1:-1))*(float)Math.PI/180f;
         float radius = entity.getCircularOrbitRadius();
         return new Vector2f((float)Math.cos(angle)*radius,(float)Math.sin(angle)*radius);

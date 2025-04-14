@@ -109,12 +109,12 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 			List<FleetMemberAPI> members=getNonReadyShips();
 			for (FleetMemberAPI member:members)
 			{
-				tooltip.addPara("   %s %s  "+member.getShipName()+", "+member.getHullSpec().getHullNameWithDashClass(),pad,highlight,""+(int)(member.getRepairTracker().getCR()*100)+"%",""+(int)(TSScan_CRLoss.calculateCRLoss(member))+"%");
+				tooltip.addPara("   %s %s  "+member.getShipName()+", "+member.getHullSpec().getHullNameWithDashClass(),pad,highlight, String.format("%d%%", (int) (member.getRepairTracker().getCR() * 100)), String.format("%d%%", (int) (TSScan_CRLoss.calculateCRLoss(member))));
 			}
 		}
 		tooltip.addPara("*2000 单位 = 1 地图网格边长", gray, pad);
 		tooltip.addPara("**当舰队最大加速为舰队中最慢舰船速度的一半时,舰队被视作缓慢移动", gray, 0f);
-		tooltip.addPara("***护卫舰下降 %s,驱逐舰下降 %s,巡洋舰下降 %s,主力舰下降 %s", 0f, gray,gray,""+(int)(TSScan_CRLoss.baseCRDamage*TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.FRIGATE))+"%",""+(int)(TSScan_CRLoss.baseCRDamage*TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.DESTROYER))+"%",""+(int)(TSScan_CRLoss.baseCRDamage*TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.CRUISER))+"%",""+(int)(TSScan_CRLoss.baseCRDamage*TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.CAPITAL_SHIP))+"%");
+		tooltip.addPara("***护卫舰下降 %s,驱逐舰下降 %s,巡洋舰下降 %s,主力舰下降 %s", 0f, gray,gray, String.format("%d%%", (int) (TSScan_CRLoss.baseCRDamage * TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.FRIGATE))), String.format("%d%%", (int) (TSScan_CRLoss.baseCRDamage * TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.DESTROYER))), String.format("%d%%", (int) (TSScan_CRLoss.baseCRDamage * TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.CRUISER))), String.format("%d%%", (int) (TSScan_CRLoss.baseCRDamage * TSScan_CRLoss.lossMultOfSize(ShipAPI.HullSize.CAPITAL_SHIP))));
 
 		addIncompatibleToTooltip(tooltip, expanded);
 
@@ -190,7 +190,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
                         case StarTypes.GAS_GIANT:cost += TSScan_Constants.VOLATILE_MULT_GAS_GIANT;
                         case StarTypes.ICE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_ICE_GIANT;
                         default:cost += 0;
-                    };
+                    }
 				}
 				else if (entity.hasTag(Tags.PLANET))cost+= TSScan_Constants.VOLATILE_MULT_PLANET;
 			}

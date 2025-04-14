@@ -14,7 +14,7 @@ import java.awt.*;
 public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
 {
 
-    public static int segmentCount = 48;
+//    public static int segmentCount = 48;
 
     public static class LagrangePointAreaParams extends RingParams {
         Vector2f location;

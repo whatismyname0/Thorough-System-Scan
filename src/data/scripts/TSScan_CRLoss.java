@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TSScan_CRLoss {
     public static final float baseCRDamage = 20f;
-    public static float CRLOSS_MULT_DEFAULT = .625f;
+    public static float CR_LOSS_MULT_DEFAULT = .625f;
 
     public static List<FleetMemberAPI> getSensorMembers()
     {
@@ -54,21 +54,21 @@ public class TSScan_CRLoss {
         {
             float CRLoss=calculateCRLoss(member);
             suppliesToRepair+=calculateSuppliesToRepair(member);
-            if (!isPrintingInfo)member.getRepairTracker().applyCREvent(CRLoss*.01f, "systemscalesensorburst", "广域传感器扫描");
-            else tooltip.addPara("  从 %s 降为 %s  "+member.getShipName()+", "+member.getHullSpec().getHullNameWithDashClass(),pad,highlight,""+(int)(member.getRepairTracker().getCR()*100f)+"%",""+Math.max((int)(member.getRepairTracker().getCR()*100f+CRLoss),0)+"%");
+            if (!isPrintingInfo)member.getRepairTracker().applyCREvent(CRLoss*.01f, "system_scale_sensor_burst", "广域传感器扫描");
+            else tooltip.addPara("  从 %s 降为 %s  "+member.getShipName()+", "+member.getHullSpec().getHullNameWithDashClass(),pad,highlight, String.format("%d%%", (int) (member.getRepairTracker().getCR() * 100f)), String.format("%d%%", Math.max((int) (member.getRepairTracker().getCR() * 100f + CRLoss), 0)));
         }
-        if (isPrintingInfo)tooltip.addPara("共需要 %s 补给恢复所有损失的战备值",pad,highlight,""+(int)-suppliesToRepair);
+        if (isPrintingInfo)tooltip.addPara("共需要 %s 补给恢复所有损失的战备值",pad,highlight, String.format("%d", (int) -suppliesToRepair));
     }
 
     public static float lossMultOfSize(ShipAPI.HullSize size)
     {
-        float mult= TSScan_Constants.CRLOSS_MULT;
+        float mult= TSScan_Constants.CR_LOSS_MULT;
         switch (size) {
-            case CAPITAL_SHIP:return mult * TSScan_Constants.CRLOSS_MULT_CAPITAL;
-            case CRUISER:return mult * TSScan_Constants.CRLOSS_MULT_CRUISER;
-            case DESTROYER:return mult * TSScan_Constants.CRLOSS_MULT_DESTROYER;
-            case FRIGATE:return mult * TSScan_Constants.CRLOSS_MULT_FRIGATE;
-            default:return mult * CRLOSS_MULT_DEFAULT;
+            case CAPITAL_SHIP:return mult * TSScan_Constants.CR_LOSS_MULT_CAPITAL;
+            case CRUISER:return mult * TSScan_Constants.CR_LOSS_MULT_CRUISER;
+            case DESTROYER:return mult * TSScan_Constants.CR_LOSS_MULT_DESTROYER;
+            case FRIGATE:return mult * TSScan_Constants.CR_LOSS_MULT_FRIGATE;
+            default:return mult * CR_LOSS_MULT_DEFAULT;
         }
     }
 
