@@ -21,7 +21,7 @@ public class TSScan_EntityDiscover {
     {
         entities=location.getAllEntities();
         for (SectorEntityToken entity:entities)
-            if (entity.getSensorProfile()!=0.0F && entity != Global.getSector().getPlayerFleet())
+            if (entity.getSensorProfile()!=0F && entity != Global.getSector().getPlayerFleet())
             {
                 entitiesPair.put(entity.getId(),entity.getSensorProfile());
 
