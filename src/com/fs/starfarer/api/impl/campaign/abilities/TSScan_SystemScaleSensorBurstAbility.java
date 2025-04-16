@@ -84,7 +84,6 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 				pad, highlight,"缓慢移动");
 		tooltip.addPara("受引力场影响,若星系除中心天体外有其他天体,只能在最高轨道天体的L4或L5点附近进行广域传感器扫描.",
 				pad);
-		addIncompatibleToTooltip(tooltip, expanded);
 		if (getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())< TSScan_Constants.SENSOR_STRENGTH_NEEDED)
 		{
 			tooltip.addPara("警告:你的舰队传感器强度必须达到 %s 才能有效进行广域传感器扫描!", pad, alarm, highlight, ""+TSScan_Constants.SENSOR_STRENGTH_NEEDED);
