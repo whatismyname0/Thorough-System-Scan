@@ -50,6 +50,7 @@ public class TSScan_LagrangePointAreaPlugin extends BaseRingTerrain
         }
         entity.setLocation(params.location.x,params.location.y);
         entity.setOrbit(params.orbit.makeCopy());
+        entity.setSkipForJumpPointAutoGen(true);
         ((CampaignTerrain)entity).setRadius(params.bandWidthInEngine);
     }
 
