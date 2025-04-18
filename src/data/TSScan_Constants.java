@@ -38,4 +38,5 @@ public class TSScan_Constants {
     public static float CR_LOSS_MULT_CAPITAL = Global.getSettings().getFloat("TSSCRLossMultCapital");
 
     public static boolean MAP_SHOULD_DISPLAY = Global.getSettings().getBoolean("TSSMapDisplay");
+    public static boolean REPORT_SHOULD_DISPLAY = Global.getSettings().getBoolean("TSSReportDisplay");
 }

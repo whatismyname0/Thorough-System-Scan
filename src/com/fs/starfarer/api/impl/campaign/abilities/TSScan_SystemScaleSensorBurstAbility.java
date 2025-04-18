@@ -10,9 +10,12 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.CampaignTerrain;
 import data.TSScan_Constants;
+import data.intel.TSScan_SalvageReportIntel;
 import data.scripts.TSScan_CRLoss;
 import data.scripts.TSScan_EntityDiscover;
 import data.scripts.TSScan_SystemScanPointsManager;
+import org.lazywizard.lazylib.LazyLib;
+import org.lazywizard.lazylib.MathUtils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -27,9 +30,9 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 	@Override
 	protected void activateImpl() {
 		if (entity.isInCurrentLocation()) {
+            initialLocation=getFleet().getContainingLocation();
 			if (!Global.getSettings().isDevMode())
 			{
-				initialLocation=getFleet().getContainingLocation();
 				TSScan_CRLoss.CRLoss(false,null);
 				getFleet().getCargo().removeCommodity(Commodities.VOLATILES,(int)computeVolatileCost());
 			}
@@ -48,10 +51,13 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		CampaignFleetAPI fleet = getFleet();
 		if (fleet == null) return;
 
-		fleet.getStats().getSensorRangeMod().modifyFlat(getModId(), ((int)(9000f*Math.random())%(10000-getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength()))), "广域传感器扫描");
+		fleet.getStats().getSensorRangeMod().modifyFlat(getModId(), -MathUtils.getRandomNumberInRange(0,(int)fleet.getSensorStrength()), "广域传感器扫描");
 		fleet.getStats().getSensorProfileMod().modifyFlat(getModId(), 30000f, "广域传感器扫描");
-		if (level>=.8f&&nowDiscovery==null)nowDiscovery=new TSScan_EntityDiscover(fleet.getStarSystem());
-
+		if (level>=.8f)
+		{
+			if (nowDiscovery == null) nowDiscovery = new TSScan_EntityDiscover(fleet.getStarSystem());
+			fleet.getStats().getSensorRangeMod().modifyFlat(getModId(), 30000f, "广域传感器扫描");
+		}
 		fleet.goSlowOneFrame();
 	}
 
@@ -65,6 +71,10 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		CampaignFleetAPI fleet = getFleet();
 		if (fleet == null) return;
 		if (nowDiscovery!=null)nowDiscovery.recoverEntities();
+
+		if (TSScan_Constants.REPORT_SHOULD_DISPLAY)
+			Global.getSector().getIntelManager().addIntel(new TSScan_SalvageReportIntel(fleet.getStarSystem()));
+
 		nowDiscovery=null;
 		fleet.getStats().getSensorRangeMod().unmodify(getModId());
 		fleet.getStats().getSensorProfileMod().unmodify(getModId());

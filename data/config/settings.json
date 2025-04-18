@@ -30,12 +30,19 @@
   "TSSCRLossMultCapital": 0.25,
 
   "TSSMapDisplay": true,
+  "TSSReportDisplay": true,
 
   "lagrangePointAreaMapColor": [224,224,224,128],
 
   "graphics": {
     "systemMap": {
       "map_lagrange_point_area": "graphics/terrain/map_lagrange_point_area.png"
+    },
+    "intel": {
+      "TSSNoneValue": "graphics/intel/TSScan_none.png",
+      "TSSLowValue": "graphics/intel/TSScan_low.png",
+      "TSSMediumValue": "graphics/intel/TSScan_medium.png",
+      "TSSHighValue": "graphics/intel/TSScan_high.png"
     }
   }
 }

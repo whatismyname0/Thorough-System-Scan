@@ -60,5 +60,6 @@ public class TSScan_LunaSettingsListener implements LunaSettingsListener
         TSScan_Constants.CR_LOSS_MULT_CAPITAL = (Float)getValue("float", "TSSCRLossMultCapital");
 
         TSScan_Constants.MAP_SHOULD_DISPLAY = (Boolean)getValue("boolean", "TSSMapDisplay");
+        TSScan_Constants.REPORT_SHOULD_DISPLAY = (Boolean)getValue("boolean", "TSSReportDisplay");
     }
 }

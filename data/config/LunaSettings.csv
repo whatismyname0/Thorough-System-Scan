@@ -31,3 +31,4 @@ TSSVolatileJumpPoint,跳跃点,Double,0.5,,"默认值：0.5",0,50,消耗挥发�
 TSSVolatileSalvageable,可打捞的人造物体,Double,1,,"默认值：1",0,50,消耗挥发物设置,
 TSS_DisplayHeader,显示设置,Header,显示设置,,,,,显示设置
 TSSMapDisplay,在Tab键地图上显示扫描位置,Boolean,true,,,,,显示设置
+TSSReportDisplay,启用椛椛报告发现,Boolean,true,,,,,显示设置

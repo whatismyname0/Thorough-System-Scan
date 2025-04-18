@@ -6,29 +6,39 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import data.TSScan_Constants;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class TSScan_EntityDiscover {
 
-    private final Map<String,Float> entitiesPair=new HashMap<>();
+
+    private final Map<String,Float> entitiesPair = new HashMap<>();
 
     private final List<SectorEntityToken> entities;
 
     public TSScan_EntityDiscover(StarSystemAPI location)
     {
-        entities=location.getAllEntities();
-        for (SectorEntityToken entity:entities)
-            if (entity.getSensorProfile()!=0F && entity != Global.getSector().getPlayerFleet())
-            {
-                entitiesPair.put(entity.getId(),entity.getSensorProfile());
+        if (TSScan_Constants.REPORT_SHOULD_DISPLAY)
+            TSSCan_SalvageableValue.reset();
 
-                if (entity instanceof CampaignFleetAPI)((CampaignFleetAPI)entity).setForceNoSensorProfileUpdate(true);
+        entities=location.getAllEntities();
+
+        for (SectorEntityToken entity:entities)
+        {
+            if (TSScan_Constants.REPORT_SHOULD_DISPLAY)
+                TSSCan_SalvageableValue.estimateEntitySalvageValue(entity);
+
+            if (entity.getSensorProfile() != 0F && entity != Global.getSector().getPlayerFleet())
+            {
+                entitiesPair.put(entity.getId(), entity.getSensorProfile());
+
+                if (entity instanceof CampaignFleetAPI) ((CampaignFleetAPI) entity).setForceNoSensorProfileUpdate(true);
                 entity.setSensorProfile(null);
             }
+        }
+
     }
+
     public void recoverEntities()
     {
         for (SectorEntityToken entity:entities)
