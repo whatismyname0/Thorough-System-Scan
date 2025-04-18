@@ -29,8 +29,7 @@ public class TSSCan_SalvageableValue
         itemAmount.put(Commodities.BETA_CORE,0f);
         itemAmount.put(Commodities.GAMMA_CORE,0f);
         itemAmount.put(Commodities.BLUEPRINTS,0f);
-        itemAmount.put(Items.TAG_MODSPEC,0f);
-        itemAmount.put(Items.TAG_COLONY_ITEM,0f);
+        itemAmount.put(Items.MODSPEC,0f);
         itemAmount.put("special_items",0f);
     }
 
@@ -60,8 +59,7 @@ public class TSSCan_SalvageableValue
         itemAmount.put(Commodities.BETA_CORE,0f);
         itemAmount.put(Commodities.GAMMA_CORE,0f);
         itemAmount.put(Commodities.BLUEPRINTS,0f);
-        itemAmount.put(Items.TAG_MODSPEC,0f);
-        itemAmount.put(Items.TAG_COLONY_ITEM,0f);
+        itemAmount.put(Items.MODSPEC,0f);
         itemAmount.put("special_items",0f);
     }
 
@@ -80,8 +78,7 @@ public class TSSCan_SalvageableValue
         tempItemAccount.put(Commodities.BETA_CORE,0);
         tempItemAccount.put(Commodities.GAMMA_CORE,0);
         tempItemAccount.put(Commodities.BLUEPRINTS,0);
-        tempItemAccount.put(Items.TAG_MODSPEC,0);
-        tempItemAccount.put(Items.TAG_COLONY_ITEM,0);
+        tempItemAccount.put(Items.MODSPEC,0);
         tempItemAccount.put("special_items",0);
         
         for (int i=0;i<10;i++)
@@ -108,23 +105,21 @@ public class TSSCan_SalvageableValue
                 if (cargo.isSpecialStack()) {
                     if (cargo.getSpecialDataIfSpecial().getId().equals("modspec")) {
                         salvageableValue += 2;
-                        tempItemAccount.put(Items.TAG_MODSPEC, tempItemAccount.get(Items.TAG_MODSPEC) + 1);
+                        tempItemAccount.put(Items.MODSPEC, tempItemAccount.get(Items.MODSPEC) + 1);
                     }
                     else if (cargo.getSpecialItemSpecIfSpecial().hasTag(Items.TAG_BLUEPRINT_PACKAGE)) {
                         salvageableValue += 10;
                         tempItemAccount.put(Commodities.BLUEPRINTS, tempItemAccount.get(Commodities.BLUEPRINTS) + 1);
                     }
-                    else if (cargo.getSpecialItemSpecIfSpecial().hasTag(Items.TAG_SINGLE_BP)) {
+                    else if (cargo.getSpecialItemSpecIfSpecial().hasTag(Items.FIGHTER_BP)||
+                            cargo.getSpecialItemSpecIfSpecial().hasTag(Items.SHIP_BP)||
+                            cargo.getSpecialItemSpecIfSpecial().hasTag(Items.WEAPON_BP)) {
                         salvageableValue += 3;
                         tempItemAccount.put(Commodities.BLUEPRINTS, tempItemAccount.get(Commodities.BLUEPRINTS) + 1);
                     }
-                    else if (cargo.getSpecialItemSpecIfSpecial().hasTag(Items.TAG_COLONY_ITEM)) {
-                        salvageableValue += 20;
-                        tempItemAccount.put(Items.TAG_COLONY_ITEM, tempItemAccount.get(Items.TAG_COLONY_ITEM) + 1);
-                    }
                     else
                     {
-                        salvageableValue += 3;
+                        salvageableValue += 20;
                         tempItemAccount.put("special_items", tempItemAccount.get("special_items") + 1);
                     }
                 }
@@ -159,8 +154,7 @@ public class TSSCan_SalvageableValue
         itemAmount.put(Commodities.BETA_CORE,itemAmount.get(Commodities.BETA_CORE)+(float)tempItemAccount.get(Commodities.BETA_CORE)/16f);
         itemAmount.put(Commodities.GAMMA_CORE,itemAmount.get(Commodities.GAMMA_CORE)+(float)tempItemAccount.get(Commodities.GAMMA_CORE)/16f);
         itemAmount.put(Commodities.BLUEPRINTS,itemAmount.get(Commodities.BLUEPRINTS)+(float)tempItemAccount.get(Commodities.BLUEPRINTS)/16f);
-        itemAmount.put(Items.TAG_MODSPEC,itemAmount.get(Items.TAG_MODSPEC)+(float)tempItemAccount.get(Items.TAG_MODSPEC)/16f);
-        itemAmount.put(Items.TAG_COLONY_ITEM,itemAmount.get(Items.TAG_COLONY_ITEM)+(float)tempItemAccount.get(Items.TAG_COLONY_ITEM)/16f);
+        itemAmount.put(Items.MODSPEC,itemAmount.get(Items.MODSPEC)+(float)tempItemAccount.get(Items.MODSPEC)/16f);
         itemAmount.put("special_items",itemAmount.get("special_items")+(float)tempItemAccount.get("special_items")/16f);
     }
 }

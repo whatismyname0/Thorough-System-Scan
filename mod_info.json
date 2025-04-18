@@ -3,7 +3,7 @@
 	"name":"彻底扫描星系",
 	"version":"1.2.0",
 	"description":"消耗一定挥发物、战备与时间获取星系内所有深空物体信息(不包括某些特殊物体)",
-	"gameVersion":"0.98a",
+	"gameVersion":"0.97a",
 	"author":"Nitori_Tachyon",
 	"modPlugin":"data.ThoroughSystemScanPlugin",
 	"dependencies":

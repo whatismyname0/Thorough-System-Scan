@@ -99,12 +99,8 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
             info.addPara("%s 个舰船、战机联队或武器蓝图", initPad, tc, h, "" + itemCount.get(Commodities.BLUEPRINTS).intValue());
             initPad = 0f;
         }
-        if (itemCount.get(Items.TAG_MODSPEC) > 0) {
-            info.addPara("%s 个舰船插件蓝图", initPad, tc, h, "" + itemCount.get(Items.TAG_MODSPEC).intValue());
-            initPad = 0f;
-        }
-        if (itemCount.get(Items.TAG_COLONY_ITEM) > 0) {
-            info.addPara("%s 个殖民地工业用特殊物品", initPad, tc, h, "" + itemCount.get(Items.TAG_COLONY_ITEM).intValue());
+        if (itemCount.get(Items.MODSPEC) > 0) {
+            info.addPara("%s 个舰船插件蓝图", initPad, tc, h, "" + itemCount.get(Items.MODSPEC).intValue());
             initPad = 0f;
         }
         if (itemCount.get("special_items") > 0) {
@@ -218,8 +214,7 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
             tags.add(Tags.INTEL_EXPLORATION);
         }
 
-        tags.add(Tags.INTEL_SALVAGE);
-//        tags.add("Salvage");                                                                                          0.97a
+        tags.add("Salvage");
         return tags;
     }
 
@@ -236,8 +231,7 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
     }
 
     public String getSortString() {
-        return getSortStringNewestFirst();
-//        return "zzz"+String.format("%1$20s", "" + getPlayerVisibleTimestamp()).replace(' ', '0');                     0.97a
+        return "zzz"+String.format("%1$20s", "" + getPlayerVisibleTimestamp()).replace(' ', '0');
     }
 
 
