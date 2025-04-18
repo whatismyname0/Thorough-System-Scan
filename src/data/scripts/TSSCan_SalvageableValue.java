@@ -22,6 +22,7 @@ public class TSSCan_SalvageableValue
 
     final static Map<String,Float> itemAmount = new HashMap<>();
     static float totalSalvageableValue = 0f;
+    static final int repeatTime = 10;
 
     static
     {
@@ -81,7 +82,7 @@ public class TSSCan_SalvageableValue
         tempItemAccount.put(Items.MODSPEC,0);
         tempItemAccount.put("special_items",0);
         
-        for (int i=0;i<10;i++)
+        for (int i=0;i<repeatTime;i++)
         {
             List<CargoStackAPI> cargos = BaseThemeGenerator.genCargoFromDrop(entity).getStacksCopy();
 
@@ -148,13 +149,13 @@ public class TSSCan_SalvageableValue
             }
         }
         
-        totalSalvageableValue+=(float)salvageableValue/16f;
+        totalSalvageableValue+=(float)salvageableValue/(float)repeatTime;
 
-        itemAmount.put(Commodities.ALPHA_CORE,itemAmount.get(Commodities.ALPHA_CORE)+(float)tempItemAccount.get(Commodities.ALPHA_CORE)/16f);
-        itemAmount.put(Commodities.BETA_CORE,itemAmount.get(Commodities.BETA_CORE)+(float)tempItemAccount.get(Commodities.BETA_CORE)/16f);
-        itemAmount.put(Commodities.GAMMA_CORE,itemAmount.get(Commodities.GAMMA_CORE)+(float)tempItemAccount.get(Commodities.GAMMA_CORE)/16f);
-        itemAmount.put(Commodities.BLUEPRINTS,itemAmount.get(Commodities.BLUEPRINTS)+(float)tempItemAccount.get(Commodities.BLUEPRINTS)/16f);
-        itemAmount.put(Items.MODSPEC,itemAmount.get(Items.MODSPEC)+(float)tempItemAccount.get(Items.MODSPEC)/16f);
-        itemAmount.put("special_items",itemAmount.get("special_items")+(float)tempItemAccount.get("special_items")/16f);
+        itemAmount.put(Commodities.ALPHA_CORE,itemAmount.get(Commodities.ALPHA_CORE)+(float)tempItemAccount.get(Commodities.ALPHA_CORE)/(float)repeatTime);
+        itemAmount.put(Commodities.BETA_CORE,itemAmount.get(Commodities.BETA_CORE)+(float)tempItemAccount.get(Commodities.BETA_CORE)/(float)repeatTime);
+        itemAmount.put(Commodities.GAMMA_CORE,itemAmount.get(Commodities.GAMMA_CORE)+(float)tempItemAccount.get(Commodities.GAMMA_CORE)/(float)repeatTime);
+        itemAmount.put(Commodities.BLUEPRINTS,itemAmount.get(Commodities.BLUEPRINTS)+(float)tempItemAccount.get(Commodities.BLUEPRINTS)/(float)repeatTime);
+        itemAmount.put(Items.MODSPEC,itemAmount.get(Items.MODSPEC)+(float)tempItemAccount.get(Items.MODSPEC)/(float)repeatTime);
+        itemAmount.put("special_items",itemAmount.get("special_items")+(float)tempItemAccount.get("special_items")/(float)repeatTime);
     }
 }
