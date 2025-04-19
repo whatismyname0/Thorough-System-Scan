@@ -151,7 +151,7 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
             info.addPara("在 " + system.getNameWithLowercaseTypeShort() + "星系中没有探测到稀有物品哦.", opad);
         }
         else {
-            info.addPara("好欸！在 " +
+            info.addPara("好诶！在 " +
             system.getNameWithLowercaseTypeShort() + "星系中探测到稀有物品. 预计总共有 %s 的价值.",
             opad, h, value.getValueString());
         }

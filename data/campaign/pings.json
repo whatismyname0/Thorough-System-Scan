@@ -8,7 +8,29 @@
 		"invert":false,
 		
 		"num":5,
-		"delay":1,	
+		"delay":1
+	},
+	"system_scale_sensor_burst_ping_finish":{
+		"sounds":["default_campaign_ping"],
+		"color":[96,255,192,255],
+		"width":6,
+		"range":5000,
+		"duration":3,
+		"invert":false,
+		
+		"num":1,
+		"delay":1
+	},
+	"system_scale_sensor_burst_ping_end":{
+		"sounds":["default_campaign_ping"],
+		"color":[255,64,64,255],
+		"width":12,
+		"range":5000,
+		"duration":5,
+		"invert":true,
+		
+		"num":3,
+		"delay":0.3
 	}
 }
 

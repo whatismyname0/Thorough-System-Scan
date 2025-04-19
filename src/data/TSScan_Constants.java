@@ -4,6 +4,8 @@ import com.fs.starfarer.api.Global;
 
 public class TSScan_Constants {
     public static final String SYSTEM_SCALE_SENSOR_BURST = "system_scale_sensor_burst";
+    public static final String SYSTEM_SCALE_SENSOR_BURST_PING_FINISH = "system_scale_sensor_burst_ping_finish";
+    public static final String SYSTEM_SCALE_SENSOR_BURST_PING_END = "system_scale_sensor_burst_ping_end";
     public final static String LAGRANGE_POINT_AREA = "lagrange_point_area";
 
 

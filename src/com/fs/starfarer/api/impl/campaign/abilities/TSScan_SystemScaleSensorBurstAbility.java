@@ -14,7 +14,6 @@ import data.intel.TSScan_SalvageReportIntel;
 import data.scripts.TSScan_CRLoss;
 import data.scripts.TSScan_EntityDiscover;
 import data.scripts.TSScan_SystemScanPointsManager;
-import org.lazywizard.lazylib.LazyLib;
 import org.lazywizard.lazylib.MathUtils;
 
 import java.awt.*;
@@ -55,7 +54,11 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		fleet.getStats().getSensorProfileMod().modifyFlat(getModId(), 30000f, "广域传感器扫描");
 		if (level>=.8f)
 		{
-			if (nowDiscovery == null) nowDiscovery = new TSScan_EntityDiscover(fleet.getStarSystem());
+			if (nowDiscovery == null)
+			{
+				nowDiscovery = new TSScan_EntityDiscover(fleet.getStarSystem());
+				Global.getSector().addPing(entity, TSScan_Constants.SYSTEM_SCALE_SENSOR_BURST_PING_FINISH);
+			}
 			fleet.getStats().getSensorRangeMod().modifyFlat(getModId(), 30000f, "广域传感器扫描");
 		}
 		fleet.goSlowOneFrame();
@@ -68,6 +71,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 
 	@Override
 	protected void cleanupImpl() {
+		Global.getSector().addPing(entity, TSScan_Constants.SYSTEM_SCALE_SENSOR_BURST_PING_END);
 		CampaignFleetAPI fleet = getFleet();
 		if (fleet == null) return;
 		if (nowDiscovery!=null)nowDiscovery.recoverEntities();
