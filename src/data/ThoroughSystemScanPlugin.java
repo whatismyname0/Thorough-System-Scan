@@ -20,11 +20,11 @@ public class ThoroughSystemScanPlugin extends BaseModPlugin
         if (!Global.getSettings().getModManager().isModEnabled("lw_lazylib"))
             throw new RuntimeException("Thorough System Scan: LazyLib is required!");
 
-        if (ModUtils.isModEnabled("lunalib"))
-        {
-            TSScan_LunaSettingsListener.reload();
-            LunaSettings.addSettingsListener(new TSScan_LunaSettingsListener());
-        }
+        if (!ModUtils.isModEnabled("lunalib"))
+            throw new RuntimeException("Thorough System Scan: LunaLib is required!");
+
+        TSScan_LunaSettingsListener.reload();
+        LunaSettings.addSettingsListener(new TSScan_LunaSettingsListener());
     }
 
     @Override
