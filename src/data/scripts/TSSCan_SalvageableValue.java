@@ -86,7 +86,7 @@ public class TSSCan_SalvageableValue extends SalvageEntity
         
         for (int i=0;i<repeatTime;i++)
         {
-            List<CargoStackAPI> cargos = genCargoFromDrop(entity).getStacksCopy();
+            List<CargoStackAPI> cargos = genCargoFromDrop(entity,i).getStacksCopy();
 
             int index=0;
             for (CargoStackAPI cargo:cargos) {
@@ -161,10 +161,10 @@ public class TSSCan_SalvageableValue extends SalvageEntity
         itemAmount.put("special_items",itemAmount.get("special_items")+(float)tempItemAccount.get("special_items")/(float)repeatTime);
     }
 
-    public static CargoAPI genCargoFromDrop(SectorEntityToken entity) {
+    public static CargoAPI genCargoFromDrop(SectorEntityToken entity,int randomParameter) {
         MemoryAPI memory = entity.getMemoryWithoutUpdate();
         long seed = memory.getLong(MemFlags.SALVAGE_SEED);
-        Random random = Misc.getRandom(seed, 1);
+        Random random = Misc.getRandom(seed, randomParameter);
 
         List<SalvageEntityGenDataSpec.DropData> dropValue = new ArrayList<>(entity.getDropValue());
         List<SalvageEntityGenDataSpec.DropData> dropRandom = new ArrayList<>(entity.getDropRandom());
