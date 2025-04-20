@@ -77,7 +77,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		if (nowDiscovery!=null)nowDiscovery.recoverEntities();
 
 		if (TSScan_Constants.REPORT_SHOULD_DISPLAY)
-			Global.getSector().getIntelManager().addIntel(new TSScan_SalvageReportIntel(fleet.getStarSystem()));
+			Global.getSector().getIntelManager().addIntel(new TSScan_SalvageReportIntel((StarSystemAPI) initialLocation));
 
 		nowDiscovery=null;
 		fleet.getStats().getSensorRangeMod().unmodify(getModId());

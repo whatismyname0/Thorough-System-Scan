@@ -1,14 +1,11 @@
 package data.intel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import java.awt.Color;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CampaignClockAPI;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Items;
@@ -219,7 +216,6 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
         }
 
         tags.add(Tags.INTEL_SALVAGE);
-//        tags.add("Salvage");                                                                                          0.97a
         return tags;
     }
 
@@ -237,92 +233,5 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
 
     public String getSortString() {
         return getSortStringNewestFirst();
-//        return "zzz"+String.format("%1$20s", "" + getPlayerVisibleTimestamp()).replace(' ', '0');                     0.97a
-    }
-
-
-    public void addLogTimestamp(TooltipMakerAPI info, Color tc, float opad) {//From vanilla 0.98a. Used for 0.97a compatibility.
-
-//		if (!getTagsForSort().contains(Tags.INTEL_FLEET_LOG) && !getTagsForSort().contains(Tags.INTEL_EXPLORATION)) {
-
-//		{
-//			float days = getDaysSincePlayerVisible();
-//			if (days >= 1) {
-//				addDays(info, "Log entry added ", "ago.", days, tc, opad);
-//			} else {
-//				info.addPara("Log entry added less than a day ago.", opad);
-//			}
-//		}
-
-        Color h = Misc.getHighlightColor();
-
-        long ts = Global.getSector().getClock().getTimestamp();
-        if (timestamp != null) ts = timestamp;
-        CampaignClockAPI clock = Global.getSector().getClock().createClock(ts);
-
-//		String dateStr = "Logged on c." + clock.getCycle() + ", " + clock.getShortMonthString() + " " + clock.getDay();
-//		//tc = Misc.getGrayColor();
-//		info.addPara(dateStr, opad, tc, h, "c." + clock.getCycle(), "" + clock.getDay());
-
-        long msPerMin = 60L * 1000L;
-        long msPerHour = msPerMin * 60L;
-        long msPerDay = msPerHour * 24L;
-        //long msPerWeek = msPerDay * 7L;
-        long msPerMonth = msPerDay * 30L;
-        long msPerCycle = msPerDay * 365L;
-
-        long diff = Global.getSector().getClock().getTimestamp() - ts;
-
-
-        String agoStr = "";
-        List<String> highlights = new ArrayList<>();
-//		highlights.add("c." + clock.getCycle());
-//		highlights.add("" + clock.getDay());
-        if (diff < msPerHour && false) {
-            long minutes = diff / msPerMin;
-            agoStr = "" + minutes + " " + (minutes == 1 ? "minute" : "minutes");
-        } else if (diff < msPerDay && false) {
-            long hours = diff / msPerHour;
-            agoStr = "" + hours + " " + (hours == 1 ? "hour" : "hours");
-            long rem = diff - hours * msPerHour;
-            long minutes = rem / msPerMin;
-            agoStr += " " + minutes + " " + (minutes == 1 ? "minute" : "minutes");
-        } else if (diff < msPerMonth) {
-            long days = diff / msPerDay;
-            agoStr = "" + days + " " + (days == 1 ? "day" : "days");
-            highlights.add("" + days);
-//			long rem = diff - days * msPerDay;
-//			long hours = rem / msPerHour;
-//			agoStr += " " + hours + " " + (hours == 1 ? "hour" : "hours");
-        } else if (diff < msPerCycle) {
-            long months = diff / msPerMonth;
-            agoStr = "" + months + " " + (months == 1 ? "month" : "months");
-            long rem = diff - months * msPerMonth;
-            long days = rem / msPerDay;
-            agoStr += " and " + days + " " + (days == 1 ? "day" : "days");
-            highlights.add("" + months);
-            highlights.add("" + days);
-        } else {
-            long cycles = diff / msPerCycle;
-            agoStr = "" + cycles + " " + (cycles == 1 ? "cycle" : "cycles");
-            long rem = diff - cycles * msPerCycle;
-            long months = rem / msPerMonth;
-            agoStr += " and " + months + " " + (months == 1 ? "month" : "months");
-            highlights.add("" + cycles);
-            highlights.add("" + months);
-        }
-
-
-        //String dateStr = "Logged on c." + clock.getCycle() + ", " + clock.getShortMonthString() + " " + clock.getDay();
-        //tc = Misc.getGrayColor();
-        //info.addPara(dateStr + ", " + agoStr + " ago.", opad, tc, h, highlights.toArray(new String[0]));
-        long days = diff / msPerDay;
-        if (days >= 1) {
-            info.addPara("Log entry added " + agoStr + " ago.", opad, tc, h, highlights.toArray(new String[0]));
-        } else {
-            info.addPara("Log entry added less than a day ago.", opad);
-        }
-
-        //ago = Label.create(agoStr, Misc.getGrayColor());
     }
 }
