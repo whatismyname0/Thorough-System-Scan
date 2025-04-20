@@ -34,14 +34,15 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
         }
     }
 
-
+    protected boolean interruptedScan;
     protected StarSystemAPI system;
     protected long removalCheckTimestamp = 0;
     protected float daysUntilRemoveCheck = 1f;
 
-    public TSScan_SalvageReportIntel(StarSystemAPI system)
+    public TSScan_SalvageReportIntel(StarSystemAPI system, boolean interruptedScan)
     {
         this.system=system;
+        this.interruptedScan=interruptedScan;
     }
 
     @Override
@@ -68,6 +69,12 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
         Map<String,Float> itemCount = TSSCan_SalvageableValue.getItemAmount();
 
         bullet(info);
+
+        if (interruptedScan)
+        {
+            info.addPara("扫描强度还没达到峰值就被打断了...没有得到什么有价值的信息", initPad, tc);
+            return;
+        }
 
         if (mode != ListInfoMode.IN_DESC) {
             Color highlight = h;
@@ -120,67 +127,59 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
 
         SalvageValue value = TSSCan_SalvageableValue.getSystemSalvageableValue();
 
-        switch (value)
+        if (interruptedScan)
+            info.addImage(Global.getSettings().getSpriteName("intel", "TSSInterrupted"), imageWidth, opad);
+        else
         {
-            case NONE:
-            {
-                info.addImage(Global.getSettings().getSpriteName("intel", "TSSNoneValue"), imageWidth, opad);
-                break;
+            switch (value) {
+                case NONE: {
+                    info.addImage(Global.getSettings().getSpriteName("intel", "TSSNoneValue"), imageWidth, opad);
+                    break;
+                }
+                case LOW: {
+                    info.addImage(Global.getSettings().getSpriteName("intel", "TSSLowValue"), imageWidth, opad);
+                    break;
+                }
+                case MEDIUM: {
+                    info.addImage(Global.getSettings().getSpriteName("intel", "TSSMediumValue"), imageWidth, opad);
+                    break;
+                }
+                case HIGH: {
+                    info.addImage(Global.getSettings().getSpriteName("intel", "TSSHighValue"), imageWidth, opad);
+                    break;
+                }
+                case EXTREME: {
+                    info.addImage(Global.getSettings().getSpriteName("intel", "TSSHighValue"), imageWidth, opad);
+                }
             }
-            case LOW:
-            {
-                info.addImage(Global.getSettings().getSpriteName("intel", "TSSLowValue"), imageWidth, opad);
-                break;
+            if (value == SalvageValue.NONE) {
+                info.addPara("在 " + system.getNameWithLowercaseTypeShort() + "星系中没有探测到稀有物品哦.", opad);
             }
-            case MEDIUM:
-            {
-                info.addImage(Global.getSettings().getSpriteName("intel", "TSSMediumValue"), imageWidth, opad);
-                break;
+            else {
+                info.addPara("好诶！在 " +
+                system.getNameWithLowercaseTypeShort() + "星系中探测到稀有物品. 预计总共有 %s 的价值.",
+                opad, h, value.getValueString());
             }
-            case HIGH:
-            {
-                info.addImage(Global.getSettings().getSpriteName("intel", "TSSHighValue"), imageWidth, opad);
-                break;
-            }
-            case EXTREME:
-            {
-                info.addImage(Global.getSettings().getSpriteName("intel", "TSSHighValue"), imageWidth, opad);
-            }
-        }
-
-        if (value == SalvageValue.NONE) {
-            info.addPara("在 " + system.getNameWithLowercaseTypeShort() + "星系中没有探测到稀有物品哦.", opad);
-        }
-        else {
-            info.addPara("好诶！在 " +
-            system.getNameWithLowercaseTypeShort() + "星系中探测到稀有物品. 预计总共有 %s 的价值.",
-            opad, h, value.getValueString());
-        }
-        switch (value)
-        {
-            case NONE:
-            {
-                info.addPara("真是遗憾，下一个星系一定会有不错的收获吧.", opad);
-                break;
-            }
-            case LOW:
-            {
-                info.addPara("姑且也算很不错呢，希望超空间今天也平静一点.", opad);
-                break;
-            }
-            case MEDIUM:
-            {
-                info.addPara("好东西真不少，这趟没白来呢.", opad);
-                break;
-            }
-            case HIGH:
-            {
-                info.addPara("我们来对地方了！呀！探测报告太多了！", opad);
-                break;
-            }
-            case EXTREME:
-            {
-                info.addPara("这简直是...真不敢相信！", opad);
+            switch (value) {
+                case NONE: {
+                    info.addPara("真是遗憾，下一个星系一定会有不错的收获吧.", opad);
+                    break;
+                }
+                case LOW: {
+                    info.addPara("姑且也算很不错呢，希望超空间今天也平静一点.", opad);
+                    break;
+                }
+                case MEDIUM: {
+                    info.addPara("好东西真不少，这趟没白来呢.", opad);
+                    break;
+                }
+                case HIGH: {
+                    info.addPara("我们来对地方了！呀！探测报告太多了！", opad);
+                    break;
+                }
+                case EXTREME: {
+                    info.addPara("这简直是...真不敢相信！", opad);
+                }
             }
         }
 
@@ -195,15 +194,11 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
     @Override
     public String getIcon() {
         SalvageValue value = TSSCan_SalvageableValue.getSystemSalvageableValue();
-        if (value == SalvageValue.NONE) {
-            return Global.getSettings().getSpriteName("intel", "TSSNoneValue");
-        } else if (value == SalvageValue.LOW) {
-            return Global.getSettings().getSpriteName("intel", "TSSLowValue");
-        } else if (value == SalvageValue.MEDIUM) {
-            return Global.getSettings().getSpriteName("intel", "TSSMediumValue");
-        } else {
-            return Global.getSettings().getSpriteName("intel", "TSSHighValue");
-        }
+        if (interruptedScan)return Global.getSettings().getSpriteName("intel", "TSSInterrupted");
+        if (value == SalvageValue.NONE)return Global.getSettings().getSpriteName("intel", "TSSNoneValue");
+        if (value == SalvageValue.LOW)return Global.getSettings().getSpriteName("intel", "TSSLowValue");
+        if (value == SalvageValue.MEDIUM)return Global.getSettings().getSpriteName("intel", "TSSMediumValue");
+        return Global.getSettings().getSpriteName("intel", "TSSHighValue");
     }
 
     @Override

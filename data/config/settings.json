@@ -42,7 +42,8 @@
       "TSSNoneValue": "graphics/intel/TSScan_none.png",
       "TSSLowValue": "graphics/intel/TSScan_low.png",
       "TSSMediumValue": "graphics/intel/TSScan_medium.png",
-      "TSSHighValue": "graphics/intel/TSScan_high.png"
+      "TSSHighValue": "graphics/intel/TSScan_high.png",
+      "TSSInterrupted": "graphics/intel/TSScan_interrupted.png"
     }
   }
 }
