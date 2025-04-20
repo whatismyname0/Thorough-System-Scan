@@ -46,7 +46,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 
 		if (getFleet().getContainingLocation()!=initialLocation)
 		{
-			if (level<.8f)interruptedScan = true;
+			if (nowDiscovery == null)interruptedScan = true;
 			deactivate();
 			return;
 		}
@@ -83,6 +83,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 			Global.getSector().getIntelManager().addIntel(new TSScan_SalvageReportIntel((StarSystemAPI) initialLocation, interruptedScan));
 
 		nowDiscovery=null;
+		interruptedScan=false;
 		fleet.getStats().getSensorRangeMod().unmodify(getModId());
 		fleet.getStats().getSensorProfileMod().unmodify(getModId());
 	}
