@@ -92,27 +92,27 @@ public class TSScan_SalvageReportIntel extends BaseIntelPlugin {
             initPad = 0f;
         }
         if (itemCount.get(Commodities.ALPHA_CORE) > 0) {
-            info.addPara("%s 个 %s 级AI核心", initPad, tc, h, "" + itemCount.get(Commodities.ALPHA_CORE).intValue(), "Alpha");
+            info.addPara("%s 个 %s 级AI核心", initPad, tc, h, String.format("%.2f",itemCount.get(Commodities.ALPHA_CORE)), "Alpha");
             initPad = 0f;
         }
         if (itemCount.get(Commodities.BETA_CORE) > 0) {
-            info.addPara("%s 个 %s 级AI核心", initPad, tc, h, "" + itemCount.get(Commodities.BETA_CORE).intValue(), "Beta");
+            info.addPara("%s 个 %s 级AI核心", initPad, tc, h, String.format("%.2f",itemCount.get(Commodities.BETA_CORE)), "Beta");
             initPad = 0f;
         }
         if (itemCount.get(Commodities.GAMMA_CORE) > 0) {
-            info.addPara("%s 个 %s 级AI核心", initPad, tc, h, "" + itemCount.get(Commodities.GAMMA_CORE).intValue(), "Gamma");
+            info.addPara("%s 个 %s 级AI核心", initPad, tc, h, String.format("%.2f",itemCount.get(Commodities.GAMMA_CORE)), "Gamma");
             initPad = 0f;
         }
         if (itemCount.get(Commodities.BLUEPRINTS) > 0) {
-            info.addPara("%s 个舰船、战机联队或武器蓝图", initPad, tc, h, "" + itemCount.get(Commodities.BLUEPRINTS).intValue());
+            info.addPara("%s 个舰船、战机联队或武器蓝图", initPad, tc, h, String.format("%.2f",itemCount.get(Commodities.BLUEPRINTS)));
             initPad = 0f;
         }
         if (itemCount.get(Items.MODSPEC) > 0) {
-            info.addPara("%s 个舰船插件蓝图", initPad, tc, h, "" + itemCount.get(Items.MODSPEC).intValue());
+            info.addPara("%s 个舰船插件蓝图", initPad, tc, h, String.format("%.2f",itemCount.get(Items.MODSPEC)));
             initPad = 0f;
         }
         if (itemCount.get("special_items") > 0) {
-            info.addPara("%s 个其他特殊物品", initPad, tc, h, "" + itemCount.get("special_items").intValue());
+            info.addPara("%s 个其他特殊物品", initPad, tc, h, String.format("%.2f",itemCount.get("special_items")));
         }
 
         unindent(info);
