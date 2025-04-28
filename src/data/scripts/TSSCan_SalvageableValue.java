@@ -24,7 +24,7 @@ public class TSSCan_SalvageableValue extends SalvageEntity
 
     final static Map<String,Float> itemAmount = new HashMap<>();
     static float totalSalvageableValue = 0f;
-    static final int repeatTime = 10;
+    static final int repeatTime = 4;
 
     static
     {

@@ -31,7 +31,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 	@Override
 	protected void activateImpl() {
 		if (entity.isInCurrentLocation()) {
-			initialLocation=getFleet().getContainingLocation();
+            initialLocation=getFleet().getContainingLocation();
 			if (!Global.getSettings().isDevMode())
 			{
 				TSScan_CRLoss.CRLoss(false,null);
@@ -109,7 +109,10 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 		}
 		if (getFleet().isInHyperspace())
 			tooltip.addPara("警告:无法在超空间启用广域传感器扫描!",alarm,pad);
-		else {
+		else if (!(getFleet().getContainingLocation() instanceof StarSystemAPI))
+			tooltip.addPara("警告:当前位置因未知干扰无法启用广域传感器扫描!",alarm,pad);
+		else
+		{
 			tooltip.addPara("扫描当前星系需要 %s 单位挥发物",pad,highlight,""+(int)computeVolatileCost());
 			if ((int) computeVolatileCost() > getFleet().getCargo().getCommodityQuantity(Commodities.VOLATILES))
 				tooltip.addPara("警告:你的挥发物储量不足!", alarm, pad);
@@ -154,16 +157,19 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 	@Override
 	public boolean isUsable() {
 		return super.isUsable() &&
+		(
+			(
+				getFleet() != null &&
 				(
-						getFleet() != null &&
-								!getFleet().isInHyperspace()&&
-								(
-										isInScanLocation()&&
-												getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())>= TSScan_Constants.SENSOR_STRENGTH_NEEDED&&
-												computeVolatileCost() <= getFleet().getCargo().getCommodityQuantity(Commodities.VOLATILES)
-								)||
-								Global.getSettings().isDevMode()
-				);
+					isInScanLocation()&&
+					getFleet().getSensorRangeMod().computeEffective(getFleet().getSensorStrength())>= TSScan_Constants.SENSOR_STRENGTH_NEEDED&&
+					computeVolatileCost() <= getFleet().getCargo().getCommodityQuantity(Commodities.VOLATILES)
+				)||
+				Global.getSettings().isDevMode()
+			)&&
+			!getFleet().isInHyperspace()&&
+			getFleet().getContainingLocation() instanceof StarSystemAPI
+		);
 	}
 	protected boolean showAlarm() {
 		return !getNonReadyShips().isEmpty() && !isOnCooldown() && !isActiveOrInProgress() && isUsable();
