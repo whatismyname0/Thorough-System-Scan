@@ -64,6 +64,11 @@ public class TSScan_SystemScanPointsManager
         ScanPointsOfSystems.put(system.getId(),ScanPoints);
     }
 
+    public static void unload()
+    {
+        IgnoredSystems = new ArrayList<>();
+        ScanPointsOfSystems = new HashMap<>();
+    }
 
     public static SectorEntityToken getEntityOfScanLocation(StarSystemAPI system)
     {

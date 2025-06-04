@@ -84,6 +84,7 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 
 		nowDiscovery=null;
 		interruptedScan=false;
+		initialLocation=null;
 		fleet.getStats().getSensorRangeMod().unmodify(getModId());
 		fleet.getStats().getSensorProfileMod().unmodify(getModId());
 	}

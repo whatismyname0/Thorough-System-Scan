@@ -30,10 +30,12 @@ public class ThoroughSystemScanPlugin extends BaseModPlugin
     @Override
     public void onGameLoad(boolean newGame)
     {
-
         Global.getSector().getCharacterData().removeAbility(TSScan_Constants.SYSTEM_SCALE_SENSOR_BURST);
         Global.getSector().getCharacterData().addAbility(TSScan_Constants.SYSTEM_SCALE_SENSOR_BURST);
+
         List<StarSystemAPI> systems = Global.getSector().getStarSystems();
+
+        TSScan_SystemScanPointsManager.unload();
         for (StarSystemAPI system:systems)
             TSScan_SystemScanPointsManager.reload(system);
     }
