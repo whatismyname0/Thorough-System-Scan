@@ -199,21 +199,21 @@ public class TSScan_SystemScaleSensorBurstAbility extends BaseDurationAbility {
 				if (entity.hasTag(Tags.STAR)||entity.hasTag(Tags.GAS_GIANT))
 				{
 					switch (((PlanetAPI) entity).getSpec().getPlanetType()) {
-						case StarTypes.BLACK_HOLE:cost += TSScan_Constants.VOLATILE_MULT_BLACK_HOLE;
-						case StarTypes.NEUTRON_STAR:cost += TSScan_Constants.VOLATILE_MULT_NEUTRON_STAR;
-						case StarTypes.BLUE_SUPERGIANT:cost += TSScan_Constants.VOLATILE_MULT_BLUE_SUPERGIANT;
-						case StarTypes.RED_SUPERGIANT:cost += TSScan_Constants.VOLATILE_MULT_RED_SUPERGIANT;
-						case StarTypes.ORANGE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_ORANGE_GIANT;
-						case StarTypes.RED_GIANT:cost += TSScan_Constants.VOLATILE_MULT_RED_GIANT;
-						case StarTypes.BLUE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_BLUE_GIANT;
-						case StarTypes.YELLOW:cost += TSScan_Constants.VOLATILE_MULT_YELLOW;
-						case StarTypes.ORANGE:cost += TSScan_Constants.VOLATILE_MULT_ORANGE;
-						case StarTypes.WHITE_DWARF:cost += TSScan_Constants.VOLATILE_MULT_WHITE_DWARF;
-						case StarTypes.RED_DWARF:cost += TSScan_Constants.VOLATILE_MULT_RED_DWARF;
-						case StarTypes.BROWN_DWARF:cost += TSScan_Constants.VOLATILE_MULT_BROWN_DWARF;
-						case StarTypes.GAS_GIANT:cost += TSScan_Constants.VOLATILE_MULT_GAS_GIANT;
-						case StarTypes.ICE_GIANT:cost += TSScan_Constants.VOLATILE_MULT_ICE_GIANT;
-						default:cost += 0;
+						case StarTypes.BLACK_HOLE:{cost += TSScan_Constants.VOLATILE_MULT_BLACK_HOLE;break;}
+						case StarTypes.NEUTRON_STAR:{cost += TSScan_Constants.VOLATILE_MULT_NEUTRON_STAR;break;}
+						case StarTypes.BLUE_SUPERGIANT:{cost += TSScan_Constants.VOLATILE_MULT_BLUE_SUPERGIANT;break;}
+						case StarTypes.RED_SUPERGIANT:{cost += TSScan_Constants.VOLATILE_MULT_RED_SUPERGIANT;break;}
+						case StarTypes.ORANGE_GIANT:{cost += TSScan_Constants.VOLATILE_MULT_ORANGE_GIANT;break;}
+						case StarTypes.RED_GIANT:{cost += TSScan_Constants.VOLATILE_MULT_RED_GIANT;break;}
+						case StarTypes.BLUE_GIANT:{cost += TSScan_Constants.VOLATILE_MULT_BLUE_GIANT;break;}
+						case StarTypes.YELLOW:{cost += TSScan_Constants.VOLATILE_MULT_YELLOW;break;}
+						case StarTypes.ORANGE:{cost += TSScan_Constants.VOLATILE_MULT_ORANGE;break;}
+						case StarTypes.WHITE_DWARF:{cost += TSScan_Constants.VOLATILE_MULT_WHITE_DWARF;break;}
+						case StarTypes.RED_DWARF:{cost += TSScan_Constants.VOLATILE_MULT_RED_DWARF;break;}
+						case StarTypes.BROWN_DWARF:{cost += TSScan_Constants.VOLATILE_MULT_BROWN_DWARF;break;}
+						case StarTypes.GAS_GIANT:{cost += TSScan_Constants.VOLATILE_MULT_GAS_GIANT;break;}
+						case StarTypes.ICE_GIANT:{cost += TSScan_Constants.VOLATILE_MULT_ICE_GIANT;break;}
+						default: cost += 0;
 					}
 				}
 				else if (entity.hasTag(Tags.PLANET))cost+= TSScan_Constants.VOLATILE_MULT_PLANET;
